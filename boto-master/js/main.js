@@ -158,5 +158,34 @@ $(window).on('load', function() {
 		}
 	});
 
+	// file transfer to server
+	$('#btnUpload').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm')[0]
+    var data = new FormData(form);
+    
+    $('#btnUpload').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://34.64.170.176:8000/api/v1/",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+        	$('#btnUpload').prop('disabled', false);
+        	alert('success')
+        },
+        error: function (e) {
+            $('#btnUpload').prop('disabled', false);
+            alert('fail');
+        }
+    });
+})
+
 })(jQuery);
 

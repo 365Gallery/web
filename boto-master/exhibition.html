@@ -32,11 +32,6 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-4 col-md-3 order-2 order-sm-1">
-					<div class="header__social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-instagram"></i></a>
-					</div>
 				</div>
 				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
 					<a href="./index.html" class="site-logo">
@@ -44,11 +39,6 @@
 					</a>
 				</div>
 				<div class="col-sm-4 col-md-3 order-3 order-sm-3">
-					<div class="header__switches">
-						<a href="#" class="search-switch"><i class="fa fa-search"></i></a>
-						<a href="#" class="nav-switch"><i class="fa fa-bars"></i></a>
-						<a href="#"><i class="fa fa-shopping-cart"></i></a>
-					</div>
 				</div>
 			</div>
 			<nav class="main__menu">
@@ -65,20 +55,16 @@
 
 	<!-- About Page -->
 	<section class="about__page">
-		<div class="container-fluid">
-			<div class="file-upload">
-				<form action="http://34.64.170.176:8000/api/v1/" method="post">
-					<div class="filebox file"> 
-						<input type="file" id="ex_filename"> 
-					</div>
-					<div class="filebox upload">
-						<input type="submit" value="Upload">
-	            	</div>
-				</form>
-			</div>
-			<div class="img-box">
-				<img src="">
-			</div>
+		<div class="filebox">
+			<form method="POST" enctype="multipart/form-data" id="uploadForm">
+				<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
+				<label for="ex_filename">파일 선택</label>
+				<input type="file" id="ex_filename" name="profile" class="upload-hidden"/>
+				<button id='btnUpload'>전송</button>
+			</form>
+		</div>
+		<div class="img-box">
+			<img src="">
 		</div>
 	</section>
 	<!-- About Page end -->
@@ -112,5 +98,24 @@
 	<script src="js/slick.min.js"></script>
 	<script src="js/main.js"></script>
 
+	<!-- Script : connecting label & file -->
+	<script>
+		$(document).ready(function(){ 
+			var fileTarget = $('.filebox .upload-hidden'); 
+
+			fileTarget.on('change', function(){ // 값이 변경되면
+			if(window.FileReader){ // modern browser 
+				var filename = $(this)[0].files[0].name; 
+			} 
+			else { // old IE 
+				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+
+			// 추출한 파일명 삽입 
+			$(this).siblings('.upload-name').val(filename); 
+		}); 
+	});
+	</script>
 	</body>
 </html>
+
