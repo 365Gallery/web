@@ -170,7 +170,7 @@ $(window).on('load', function() {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/",
+        url: "http://34.64.170.176:8000/api/v1/images",
         data: data,
         processData: false,
         contentType: false,
