@@ -44,7 +44,7 @@
 			<nav class="main__menu">
 				<ul class="nav__menu">
 					<li><a href="./index.html">Home</a></li>
-					<li><a href="./exhibition.html" class="menu--active">Exhibition</a></li>
+					<li><a href="./exhibition_pic.html" class="menu--active">Exhibition</a></li>
 					<li><a href="./mygallery.html">My Gallery</a></li>
 					<li><a href="./login.html">Log in</a></li>
 				</ul>
@@ -55,31 +55,28 @@
 
 	<!-- About Page -->
 	<section class="about__page">
+
 		<div class="filebox">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm">
 				<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
 				<label for="ex_filename">파일 선택</label>
-				<input type="file" id="ex_filename" name="profile" class="upload-hidden"/>
+				<input type="file" id="ex_filename"  class="upload-hidden"/>
 				<button id='btnUpload'>전송</button>
 			</form>
+		</div>		
+		<div class="move-btn-cam">
+			<button onClick="location.href='exhibition_cam.html'">웹캠 전환</button>
 		</div>
 		<div class="img-box">
-			<img src="">
+			<div class = "input-img">
+				<img id="myimg" src ="" alt =""/>
+			</div>
+			<div class = "output-img">
+				<img src="http://34.64.170.176:8000/api/v1/media/output.jpeg" name="imgReload" alt=""/>
+			</div>
 		</div>
 	</section>
 	<!-- About Page end -->
-
-	<!-- Footer Section -->
-	<footer class="footer__section">
-		<div class="container">
-			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			<div class="footer__copyright__text">
-				<p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-			</div>
-			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-		</div>
-	</footer>
-	<!-- Footer Section end -->
 
 	<!-- Search Begin -->
 	<div class="search-model">
@@ -100,10 +97,16 @@
 
 	<!-- Script : connecting label & file -->
 	<script>
+		var sel_file;
+
 		$(document).ready(function(){ 
 			var fileTarget = $('.filebox .upload-hidden'); 
 
 			fileTarget.on('change', function(){ // 값이 변경되면
+
+			$('.img-box .input-img').empty();
+			$('.img-box .input-img').prepend('<img id="myimg" src = "'+ URL.createObjectURL($('#uploadForm')[0][1].files[0]) + '"/>');
+
 			if(window.FileReader){ // modern browser 
 				var filename = $(this)[0].files[0].name; 
 			} 
@@ -112,9 +115,28 @@
 			} 
 
 			// 추출한 파일명 삽입 
-			$(this).siblings('.upload-name').val(filename); 
-		}); 
-	});
+			$(this).siblings('.upload-name').val(filename);
+
+			}); 
+		});
+	</script>
+
+	<!-- Script: Img reload -->
+	<script>
+		setInterval(function(){
+	    	timeTmp = new Date().getTime();
+	    	timeTmp = "?"+ timeTmp;
+
+	    	var target='imgReload';
+	    	newImage = document.images[target].src;
+
+	    	idx = newImage.indexOf("?", 0);
+
+	    	if(idx > 0){
+	    		newImage = newImage.substr(0, idx);
+	    	}
+	    	document.images[target].src = newImage+timeTmp;
+		}, 1000);
 	</script>
 	</body>
 </html>

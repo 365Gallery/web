@@ -162,8 +162,9 @@ $(window).on('load', function() {
 	$('#btnUpload').on('click', function(event) {
     event.preventDefault();
     
-    var form = $('#uploadForm')[0]
-    var data = new FormData(form);
+    var form = $('#uploadForm')[0][1].files[0];
+    var data = new FormData();
+	data.append('file'.form, form.name);
     
     $('#btnUpload').prop('disabled', true);
 	

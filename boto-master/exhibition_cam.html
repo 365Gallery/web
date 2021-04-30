@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css/slicknav.min.css"/>
+
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="css/style.css"/>
 
@@ -33,7 +34,7 @@
 				<div class="col-sm-4 col-md-3 order-2 order-sm-1">
 				</div>
 				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
-					<a href="./index.html" class="site-logo" >
+					<a href="./index.html" class="site-logo">
 						<img src="img/logo.png" alt="" width=300 height=300>
 					</a>
 				</div>
@@ -43,37 +44,31 @@
 			<nav class="main__menu">
 				<ul class="nav__menu">
 					<li><a href="./index.html">Home</a></li>
-					<li><a href="./exhibition_pic.html">Exhibition</a></li>
+					<li><a href="./exhibition_pic.html" class="menu--active">Exhibition</a></li>
 					<li><a href="./mygallery.html">My Gallery</a></li>
-					<li><a href="./login.html" class="menu--active">Log in</a></li>
+					<li><a href="./login.html">Log in</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
 	<!-- Header Section end -->
 
-	<!-- Contact Page -->
-	<section class="contact__page">
-		<div class="contact__warp">
-			<div class="login__form">
-				<h2>Log-in</h2>
-            <div class="login_id">
-                <h4>E-mail</h4>
-                <input type="email" name="" id="" placeholder="Email">
-            </div>
-            <div class="login_pw">
-                <h4>Password</h4>
-                <input type="password" name="" id="" placeholder="Password">
-            </div>
-            <div class="submit">
-                <input type="submit" value="submit">
-            </div>
-        </div>
+	<!-- About Page -->
+	<section class="about__page">
+		<div class="move-btn-pic">
+			<button onClick="location.href='exhibition_pic.html'">이미지 전환</button>
+		</div>
+		<div class="cam-box">
+			<div id="mycam" class="input-cam" autoplay>
+			</div>
+			<div class = "output-cam">
+				<img src="http://34.64.170.176:8000/api/v1/media/output.jpeg" name="camReload" alt=""/>
+			</div>
+
+			<form><input type="button" value="Snap It" onClick="take_snapshot()"></form>
 		</div>
 	</section>
-	<!-- Contact Page end -->
-
-
+	<!-- About Page end -->
 
 	<!-- Search Begin -->
 	<div class="search-model">
@@ -91,6 +86,68 @@
 	<script src="js/jquery.slicknav.min.js"></script>
 	<script src="js/slick.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/webcam.js"></script>
 
+	<!-- Script: Cam reload -->
+	<script>
+		setInterval(function(){
+	    	timeTmp = new Date().getTime();
+	    	timeTmp = "?"+ timeTmp;
+
+	    	var target='camReload';
+	    	newImage = document.images[target].src;
+
+	    	idx = newImage.indexOf("?", 0);
+
+	    	if(idx > 0){
+	    		newImage = newImage.substr(0, idx);
+	    	}
+	    	document.images[target].src = newImage+timeTmp;
+		}, 60000);
+	</script>
+
+	<!-- Script: Cam functions -->
+	<script>
+		function uploadSnap(img_src){
+			var file =  img_src;
+			var data = new FormData();
+			data.append("webcam", file);
+
+			$.ajax({
+		        type: "POST",
+		        enctype: 'multipart/form-data',
+		        url: "http://34.64.170.176:8000/api/v1/images/",
+		        data: data,
+		        processData: false,
+		        contentType: false,
+		        cache: false,
+		        timeout: 600000,
+		        success: function (data) {
+		        	alert('success')
+		        },
+		        error: function (e) {
+		            alert('fail');
+		        }
+		    });
+		}
+
+		function take_snapshot() {
+			Webcam.snap(function(data_uri) {
+				uploadSnap(data_uri);
+			});
+		}
+
+		function ShowCam(){
+			Webcam.set({
+			width: 500,
+			height: 400,
+			image_format: 'jpeg',
+			jpeg_quality: 100
+			});
+			Webcam.attach('#mycam');
+		}
+
+		window.onload = ShowCam;
+	</script>
 	</body>
 </html>
