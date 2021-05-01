@@ -62,10 +62,11 @@
 			<div id="mycam" class="input-cam" autoplay>
 			</div>
 			<div class = "output-cam">
-				<img src="http://34.64.170.176:8000/api/v1/media/output.jpeg" name="camReload" alt=""/>
+				<img src="http://34.64.170.176:8000/media/output.jpeg" name="camReload" alt=""/>
 			</div>
-
+<!--
 			<form><input type="button" value="Snap It" onClick="take_snapshot()"></form>
+		-->
 		</div>
 	</section>
 	<!-- About Page end -->
@@ -103,11 +104,31 @@
 	    		newImage = newImage.substr(0, idx);
 	    	}
 	    	document.images[target].src = newImage+timeTmp;
-		}, 1000);
+		}, 300);
 	</script>
 
 	<!-- Script: Cam functions -->
 	<script>
+		function dataURItoBlob(dataURI) {
+		    // convert base64/URLEncoded data component to raw binary data held in a string
+		    var byteString;
+		    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+		        byteString = atob(dataURI.split(',')[1]);
+		    else
+		        byteString = unescape(dataURI.split(',')[1]);
+
+		    // separate out the mime component
+		    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+		    // write the bytes of the string to a typed array
+		    var ia = new Uint8Array(byteString.length);
+		    for (var i = 0; i < byteString.length; i++) {
+		        ia[i] = byteString.charCodeAt(i);
+		    }
+
+		    return new Blob([ia], {type:mimeString});
+		}
+
 		function uploadSnap(img_src){
 			imageBlob = dataURItoBlob(img_src);
 			var data = new FormData();
@@ -122,12 +143,6 @@
 		        contentType: false,
 		        cache: false,
 		        timeout: 600000,
-		        success: function (data) {
-		        	alert('success');
-		        },
-		        error: function (e) {
-		            alert('fail');
-		        }
 		    });
 		}
 
@@ -148,6 +163,12 @@
 		}
 
 		window.onload = ShowCam;
+
+		setInterval(function(){
+	    	if (Webcam.loaded) {
+	    		take_snapshot();
+	    	}
+		}, 500);
 	</script>
 	</body>
 </html>

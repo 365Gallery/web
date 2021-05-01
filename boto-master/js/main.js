@@ -164,7 +164,7 @@ $(window).on('load', function() {
     
     var form = $('#uploadForm')[0][1].files[0];
     var data = new FormData();
-	data.append('file'.form, form.name);
+	data.append('file', form, form.name);
     
     $('#btnUpload').prop('disabled', true);
 	
@@ -177,14 +177,6 @@ $(window).on('load', function() {
         contentType: false,
         cache: false,
         timeout: 600000,
-        success: function (data) {
-        	$('#btnUpload').prop('disabled', false);
-        	alert('success')
-        },
-        error: function (e) {
-            $('#btnUpload').prop('disabled', false);
-            alert('fail');
-        }
     });
 })
 
