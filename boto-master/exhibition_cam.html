@@ -103,15 +103,15 @@
 	    		newImage = newImage.substr(0, idx);
 	    	}
 	    	document.images[target].src = newImage+timeTmp;
-		}, 60000);
+		}, 1000);
 	</script>
 
 	<!-- Script: Cam functions -->
 	<script>
 		function uploadSnap(img_src){
-			var file =  img_src;
+			imageBlob = dataURItoBlob(img_src);
 			var data = new FormData();
-			data.append("webcam", file);
+			data.append('file', imageBlob, "webcam.jpeg");
 
 			$.ajax({
 		        type: "POST",
@@ -123,7 +123,7 @@
 		        cache: false,
 		        timeout: 600000,
 		        success: function (data) {
-		        	alert('success')
+		        	alert('success');
 		        },
 		        error: function (e) {
 		            alert('fail');
