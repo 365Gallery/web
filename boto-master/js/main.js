@@ -159,26 +159,131 @@ $(window).on('load', function() {
 	});
 
 	// file transfer to server
-	$('#btnUpload').on('click', function(event) {
+	// scream
+	$('#btnUpload1').on('click', function(event) {
     event.preventDefault();
     
-    var form = $('#uploadForm')[0][1].files[0];
+    var form = $('#uploadForm1')[0][1].files[0];
     var data = new FormData();
 	data.append('file', form, form.name);
     
-    $('#btnUpload').prop('disabled', true);
+    $('#btnUpload1').prop('disabled', true);
 	
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/images/",
+        url: "http://34.64.170.176:8000/api/v1/images/?model=scream.ckpt",
         data: data,
         processData: false,
         contentType: false,
         cache: false,
-        timeout: 600000,
-    });
-})
+        timeout: 600000});
+	})
+
+	// la muse
+	$('#btnUpload2').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm2')[0][1].files[0];
+    var data = new FormData();
+	data.append('file', form, form.name);
+    
+    $('#btnUpload2').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://34.64.170.176:8000/api/v1/images/?model=la_muse.ckpt",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000});
+	})
+
+	// Rain princess
+	$('#btnUpload3').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm3')[0][1].files[0];
+    var data = new FormData();
+	data.append('file', form, form.name);
+    
+    $('#btnUpload3').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://34.64.170.176:8000/api/v1/images/?model=rain_princess.ckpt",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000});
+	})
+
+	// udnie
+	$('#btnUpload4').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm4')[0][1].files[0];
+    var data = new FormData();
+	data.append('file', form, form.name);
+    
+    $('#btnUpload4').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://34.64.170.176:8000/api/v1/images/?model=udnie.ckpt",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000});
+	})
+
+	// Wave
+	$('#btnUpload5').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm5')[0][1].files[0];
+    var data = new FormData();
+	data.append('file', form, form.name);
+    
+    $('#btnUpload5').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://34.64.170.176:8000/api/v1/images/?model=wave.ckpt",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000});
+	})
+
+	// wreck
+	$('#btnUpload6').on('click', function(event) {
+    event.preventDefault();
+    
+    var form = $('#uploadForm6')[0][1].files[0];
+    var data = new FormData();
+	data.append('file', form, form.name);
+    
+    $('#btnUpload6').prop('disabled', true);
+	
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://34.64.170.176:8000/api/v1/images/?model=wreck.ckpt",
+        data: data,
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000});
+	})
 
 })(jQuery);
 

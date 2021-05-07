@@ -35,7 +35,7 @@
 				</div>
 				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
 					<a href="./index.html" class="site-logo">
-						<img src="img/logo.png" alt="" width=300 height=300>
+						<img src="img/logo.png" alt="">
 					</a>
 				</div>
 				<div class="col-sm-4 col-md-3 order-3 order-sm-3">
@@ -44,7 +44,15 @@
 			<nav class="main__menu">
 				<ul class="nav__menu">
 					<li><a href="./index.html">Home</a></li>
-					<li><a href="./exhibition_pic.html" class="menu--active">Exhibition</a></li>
+					<li><a href="./scream_pic.html" class="menu--active">Exhibition</a>
+										<ul class="sub__menu">
+							<li><a href="./scream_pic.html">Scream</a></li>
+							<li><a href="./la_muse_pic.html">La Muse</a></li>
+							<li><a href="./rain_princess_pic.html">Rain Princess</a></li>
+							<li><a href="./udnie_pic.html">Udnie</a></li>
+							<li><a href="./wave_pic.html">Wave</a></li>
+							<li><a href="./wreck_pic.html">Shipwreck</a></li>
+						</ul></li>
 					<li><a href="./mygallery.html">My Gallery</a></li>
 					<li><a href="./login.html">Log in</a></li>
 				</ul>
@@ -57,15 +65,15 @@
 	<section class="about__page">
 
 		<div class="filebox">
-			<form method="POST" enctype="multipart/form-data" id="uploadForm">
+			<form method="POST" enctype="multipart/form-data" id="uploadForm2">
 				<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
 				<label for="ex_filename">파일 선택</label>
 				<input type="file" id="ex_filename"  class="upload-hidden"/>
-				<button id='btnUpload'>전송</button>
+				<button id='btnUpload2'>변환</button>
 			</form>
 		</div>		
 		<div class="move-btn-cam">
-			<button onClick="location.href='exhibition_cam.html'">웹캠 전환</button>
+			<button onClick="location.href='la_muse_cam.html'">웹캠 전환</button>
 		</div>
 		<div class="img-box">
 			<div class = "input-img">
@@ -75,6 +83,25 @@
 				<img src="http://34.64.170.176:8000/media/output.jpeg" name="imgReload" alt=""/>
 			</div>
 		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="about__text">
+						<h3 class="about__title">
+							<br><br>Pablo Picasso</h3>
+						<div class="about__meta">
+							<img src="img/exhibition/La_Muse.jpg" alt="">
+							<div class="about__meta__info">
+								<h5>La Muse</h5>
+								<p>Pablo Picasso | 1935</p>
+							</div>
+						</div>
+						<p>파블로 루이즈 피카소(Pablo Ruiz Picasso, 1881년 10월 25일 ~ 1973년 4월 8일)는 스페인 말라가에서 출생하였고 주로 프랑스에서 미술활동을 한 20세기의 대표적 큐비즘 작가로 널리 알려져 있으며, 대표작으로 《아비뇽의 처녀들》, 《게르니카》 등이 있다.
+						</p>
+						<p>이 작품에서는 두 여인을 발견할 수 있다. 한 여인은 거울에 비친 모습을 드로잉하고 있으며, 다른 한 여인은 팔을 베고 엎드려 잠을 청하고 있다. 이 시기에 피카소는 어린 소녀가 그림을 그리고, 글을 쓰거나 읽는 류의 그림을 많이 그렸다. 프랑스 모델이자 피카소의 연인이었던 Marie Therese Walther가 이런 모습으로 등장한다. 그들의 딸인  Maya Widmaier Picasso는 1935년 10월, 이 작품이 그려진지 몇 달 후에 태어났다. </p>
+					</div>
+				</div>
+			</div>
 	</section>
 	<!-- About Page end -->
 
@@ -105,7 +132,7 @@
 			fileTarget.on('change', function(){ // 값이 변경되면
 
 			$('.img-box .input-img').empty();
-			$('.img-box .input-img').prepend('<img id="myimg" src = "'+ URL.createObjectURL($('#uploadForm')[0][1].files[0]) + '"/>');
+			$('.img-box .input-img').prepend('<img id="myimg" src = "'+ URL.createObjectURL($('#uploadForm2')[0][1].files[0]) + '"/>');
 
 			if(window.FileReader){ // modern browser 
 				var filename = $(this)[0].files[0].name; 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>365 Gallery</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Boto Photo Studio HTML Template">
+	<meta name="keywords" content="photo, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/slicknav.min.css"/>
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/style.css"/>
+
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header Section -->
+	<header class="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-md-3 order-2 order-sm-1">
+				</div>
+				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
+					<a href="./index.html" class="site-logo">
+						<img src="img/logo.png" alt="">
+					</a>
+				</div>
+				<div class="col-sm-4 col-md-3 order-3 order-sm-3">
+				</div>
+			</div>
+			<nav class="main__menu">
+				<ul class="nav__menu">
+					<li><a href="./index.html">Home</a></li>
+					<li><a href="./scream_pic.html" class="menu--active">Exhibition</a>
+										<ul class="sub__menu">
+							<li><a href="./scream_pic.html">Scream</a></li>
+							<li><a href="./la_muse_pic.html">La Muse</a></li>
+							<li><a href="./rain_princess_pic.html">Rain Princess</a></li>
+							<li><a href="./udnie_pic.html">Udnie</a></li>
+							<li><a href="./wave_pic.html">Wave</a></li>
+							<li><a href="./wreck_pic.html">Shipwreck</a></li>
+						</ul></li>
+					<li><a href="./mygallery.html">My Gallery</a></li>
+					<li><a href="./login.html">Log in</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Header Section end -->
+
+	<!-- About Page -->
+	<section class="about__page">
+
+		<div class="filebox">
+			<form method="POST" enctype="multipart/form-data" id="uploadForm5">
+				<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
+				<label for="ex_filename">파일 선택</label>
+				<input type="file" id="ex_filename"  class="upload-hidden"/>
+				<button id='btnUpload5'>변환</button>
+			</form>
+		</div>		
+		<div class="move-btn-cam">
+			<button onClick="location.href='wave_cam.html'">웹캠 전환</button>
+		</div>
+		<div class="img-box">
+			<div class = "input-img">
+				<img id="myimg" src ="" alt =""/>
+			</div>
+			<div class = "output-img">
+				<img src="http://34.64.170.176:8000/media/output.jpeg" name="imgReload" alt=""/>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="about__text">
+						<h3 class="about__title">
+							<br><br>Katsushika Hokusai</h3>
+						<div class="about__meta">
+							<img src="img/exhibition/wave.jpg" alt="">
+							<div class="about__meta__info">
+								<h5>The Great Wave off Kanagawa</h5>
+								<p>Katsushika Hokusai | 1831 | 25.7 x 37.8 cm, 10.1 x 14.9 in | color woodblock</p>
+							</div>
+						</div>
+						<p>가나가와 해변의 높은 파도 아래(神奈川沖浪裏 가나가와오키나미우라)는 가쓰시카 호쿠사이가 제작한 목판화이다. 1825년 무렵에 간행된 우키요에 연작 《후가쿠 36경》 중 하나로, 거대한 파도와 배, 배경에 후지산이 그려져있다. 호쿠사이의 작품 중 가장 유명하며 세계에서 알려진 가장 유명한 일본 미술 작품의 하나이다. 현재 영국 런던의 대영박물관에 소장되어 있다.</p>
+						<p>이 작품에서는 거대한 파도가 험한 바다를 지배하는 가운데 그 파도에 휩쓸리기 직전인 조그만 배 세 척을 담아냈다. 배를 삼키기 직전에 가장 높은 지점에서 정지한 파도는 마치 날카로운 발톱과 같은 거품을 내뿜고 있는데, 이는 자연의 압도적인 힘을 강조하며 자연의 힘에 비하면 인간의 존재는 보잘것 없다는 것을 암시하고 있다. 파도 왼편에는 제목과 호쿠사이의 서명 (낙관)이 있는데, '北斎改爲一筆' (호쿠사이였던 이츠가 그림)라고 씌여 있어 이전에는 호쿠사이였던 예명을 이츠 (爲一)로 바꾸었음을 알 수 있다. 그 뒤로는 아주 작게 후지산을 그려내, 정적인 분위기와 파도를 대비시켜 전경에 긴장감을 부여하게 했다. 눈 덮인 후지산 뒤의 미묘한 색조 변화는 그 주변에 걱정스러운 분위기를 도출한다. 이른바 보카시 (暈し)라 불리는 이 기법은 판화를 인쇄하기 전에 목판에서 물감을 조금 닦아내 여리게 보이도록 한 것이다.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- About Page end -->
+
+	<!-- Search Begin -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search End -->
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/vendor/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<!-- Script : connecting label & file -->
+	<script>
+		var sel_file;
+
+		$(document).ready(function(){ 
+			var fileTarget = $('.filebox .upload-hidden'); 
+
+			fileTarget.on('change', function(){ // 값이 변경되면
+
+			$('.img-box .input-img').empty();
+			$('.img-box .input-img').prepend('<img id="myimg" src = "'+ URL.createObjectURL($('#uploadForm5')[0][1].files[0]) + '"/>');
+
+			if(window.FileReader){ // modern browser 
+				var filename = $(this)[0].files[0].name; 
+			} 
+			else { // old IE 
+				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+
+			// 추출한 파일명 삽입 
+			$(this).siblings('.upload-name').val(filename);
+
+			}); 
+		});
+	</script>
+
+	<!-- Script: Img reload -->
+	<script>
+		setInterval(function(){
+	    	timeTmp = new Date().getTime();
+	    	timeTmp = "?"+ timeTmp;
+
+	    	var target='imgReload';
+	    	newImage = document.images[target].src;
+
+	    	idx = newImage.indexOf("?", 0);
+
+	    	if(idx > 0){
+	    		newImage = newImage.substr(0, idx);
+	    	}
+	    	document.images[target].src = newImage+timeTmp;
+		}, 1000);
+	</script>
+	</body>
+</html>
+
