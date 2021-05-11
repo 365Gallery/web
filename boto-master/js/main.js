@@ -172,7 +172,7 @@ $(window).on('load', function() {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/images/?model=scream.ckpt",
+        url: "http://34.64.208.178:8000/api/v1/images/?model=scream.ckpt",
         data: data,
         processData: false,
         contentType: false,
@@ -193,7 +193,7 @@ $(window).on('load', function() {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/images/?model=la_muse.ckpt",
+        url: "http://34.64.208.178:8000/api/v1/images/?model=la_muse.ckpt",
         data: data,
         processData: false,
         contentType: false,
@@ -214,7 +214,7 @@ $(window).on('load', function() {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/images/?model=rain_princess.ckpt",
+        url: "http://34.64.208.178:8000/api/v1/images/?model=rain_princess.ckpt",
         data: data,
         processData: false,
         contentType: false,
@@ -235,7 +235,7 @@ $(window).on('load', function() {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/images/?model=udnie.ckpt",
+        url: "http://34.64.208.178:8000/api/v1/images/?model=udnie.ckpt",
         data: data,
         processData: false,
         contentType: false,
@@ -256,7 +256,7 @@ $(window).on('load', function() {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/images/?model=wave.ckpt",
+        url: "http://34.64.208.178:8000/api/v1/images/?model=wave.ckpt",
         data: data,
         processData: false,
         contentType: false,
@@ -277,7 +277,7 @@ $(window).on('load', function() {
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "http://34.64.170.176:8000/api/v1/images/?model=wreck.ckpt",
+        url: "http://34.64.208.178:8000/api/v1/images/?model=wreck.ckpt",
         data: data,
         processData: false,
         contentType: false,
