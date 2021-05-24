@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css/slicknav.min.css"/>
+
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="css/style.css"/>
 
@@ -33,7 +34,7 @@
 				<div class="col-sm-4 col-md-3 order-2 order-sm-1">
 				</div>
 				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
-					<a href="./index.html" class="site-logo" >
+					<a href="./index.html" class="site-logo">
 						<img src="img/logo.png" alt="">
 					</a>
 				</div>
@@ -102,27 +103,26 @@
 	</header>
 	<!-- Header Section end -->
 
-	<!-- Contact Page -->
-	<section class="contact__page">
-		<div class="contact__warp">
-			<div class="login__form">
-				<h2>Log-in</h2>
-            <div class="login_id">
-                <h4>E-mail</h4>
-                <input type="email" name="" id="" placeholder="Email">
-            </div>
-            <div class="login_pw">
-                <h4>Password</h4>
-                <input type="password" name="" id="" placeholder="Password">
-            </div>
-            <div class="submit">
-                <input type="submit" value="submit">
-            </div>
-        </div>
+	<!-- About Page -->
+	<section class="about__page">
+		<div class="move-btn-pic">
+			<button onClick="setChildValue_pic()">이미지 전환</button>
+		</div>
+		<div class="cam-box">
+			<div id="mycam" class="input-cam" autoplay>
+			</div>
+			<div class = "output-cam">
+				<img src="http://34.64.152.92:8000/media/output.jpeg" name="camReload" alt=""/>
+			</div>
+		</div>
+		<div class="cam-description">
+			<div class="row">
+				<div class="art_description">
+				</div>
+			</div>
 		</div>
 	</section>
-	<!-- Contact Page end -->
-
+	<!-- About Page end -->
 
 
 	<!-- Search Begin -->
@@ -141,9 +141,156 @@
 	<script src="js/jquery.slicknav.min.js"></script>
 	<script src="js/slick.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/webcam.js"></script>
+
+	<!-- Script: Cam -->
+	<script>
+	function dataURItoBlob(dataURI) {
+	    // convert base64/URLEncoded data component to raw binary data held in a string
+	    var byteString;
+	    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+	        byteString = atob(dataURI.split(',')[1]);
+	    else
+	        byteString = unescape(dataURI.split(',')[1]);
+
+	    // separate out the mime component
+	    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+	    // write the bytes of the string to a typed array
+	    var ia = new Uint8Array(byteString.length);
+	    for (var i = 0; i < byteString.length; i++) {
+	        ia[i] = byteString.charCodeAt(i);
+	    }
+
+	    return new Blob([ia], {type:mimeString});
+	}
+
+	function uploadSnap(img_src){
+		var num;
+
+		num = location.href.substr(location.href.lastIndexOf('=') + 1);
+		 $('.art_description').empty();
+		 num = num - '0'
+
+		imageBlob = dataURItoBlob(img_src);
+		var data = new FormData();
+		data.append('file', imageBlob, "webcam.jpeg");
+
+		var serverURL = "http://34.64.152.92:8000/api/v1/images/";
+
+		switch (num){
+			case 0:
+				serverURL = serverURL + "?model=wreck.ckpt";
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				serverURL = serverURL + "?model=rain_princess.ckpt";
+				break;
+			case 5:
+				serverURL = serverURL + "?model=wave.ckpt";
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				serverURL = serverURL + "?model=la_muse.ckpt";
+				break;
+			case 9:
+				break;
+			case 10:
+				serverURL = serverURL + "?model=udnie.ckpt";
+				break;
+			case 11:
+				break;
+			case 12:
+				break;
+			case 13:
+				serverURL = serverURL + "?model=scream.ckpt";
+				break;
+			case 14:
+				break;
+			case 15:
+				break;
+			case 16:
+				break;
+			case 17:
+				break;
+			case 18:
+				break;
+			case 19:
+				break;
+			case 20:
+				break;
+		}
+
+		serverURL = serverURL + "&async=true"
+
+		$.ajax({
+	        type: "POST",
+	        enctype: 'multipart/form-data',
+	        url: serverURL,
+	        data: data,
+	        processData: false,
+	        contentType: false,
+	        cache: false,
+	        timeout: 600000,
+	    });
+	}
+
+	function take_snapshot() {
+		Webcam.snap(function(data_uri) {
+			uploadSnap(data_uri);
+		});
+	}
+
+	function ShowCam(){
+		Webcam.set({
+		width: 500,
+		height: 400,
+		image_format: 'jpeg',
+		jpeg_quality: 30
+		});
+		Webcam.attach('#mycam');
+	}
+		window.onload = ShowCam;
+
+		setInterval(function(){
+	    	if (Webcam.loaded) {
+	    		take_snapshot();
+	    	}
+		}, 300);
+
+		setInterval(function(){
+	    	timeTmp = new Date().getTime();
+	    	timeTmp = "?"+ timeTmp;
+
+	    	var target='camReload';
+	    	newImage = document.images[target].src;
+
+	    	idx = newImage.indexOf("?", 0);
+
+	    	if(idx > 0){
+	    		newImage = newImage.substr(0, idx);
+	    	}
+	    	document.images[target].src = newImage+timeTmp;
+		}, 150);
+	</script>
+
+	<!-- Script: img parameter -->
 	<script>
 	function setChildValue(index) {
 		window.location.href = "exhibition_pic.html?index=" + index;
+	}
+
+	function setChildValue_pic() {
+		var num = location.href.substr(location.href.lastIndexOf('=') + 1);
+		window.location.href = "exhibition_pic.html?index=" + num;
 	}
 	</script>
 	</body>

@@ -46,15 +46,57 @@
 			<nav class="main__menu">
 				<ul class="nav__menu">
 					<li><a href="./index.html" class="menu--active">Home</a></li>
-					<li><a href="./scream_pic.html">Exhibition</a>
-					<ul class="sub__menu">
-							<li><a href="./scream_pic.html">Scream</a></li>
-							<li><a href="./la_muse_pic.html">La Muse</a></li>
-							<li><a href="./rain_princess_pic.html">Rain Princess</a></li>
-							<li><a href="./udnie_pic.html">Udnie</a></li>
-							<li><a href="./wave_pic.html">Wave</a></li>
-							<li><a href="./wreck_pic.html">Shipwreck</a></li>
-						</ul></li>
+					<li><a href="#" onclick="setChildValue(0)">Exhibition</a>
+						<ul class="sub__menu">
+					<li><a href="#" onclick="setChildValue(0)">Romanticism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(0)">William Turner</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(1)">Impressionism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(1)">Van Gogh</a></li>
+						<li><a href="#" onclick="setChildValue(2)">Seurat</a></li>
+						<li><a href="#" onclick="setChildValue(3)">Claude Monet</a></li>
+						<li><a href="#" onclick="setChildValue(4)">Leonid Afremov</a></li>
+						<li><a href="#" onclick="setChildValue(5)">Katsushika Hokusai</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(6)">Fauvism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(6)">Henri Matisse</a></li>
+						<li><a href="#" onclick="setChildValue(7)">Andre Derain</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(8)">Cubism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(8)">Pablo Picasso</a></li>
+						<li><a href="#" onclick="setChildValue(9)">Fernand Leger</a></li>
+						<li><a href="#" onclick="setChildValue(10)">Francis Picabia</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(11)">Abstractionism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(11)">Robert Delaunay</a></li>
+						<li><a href="#" onclick="setChildValue(12)">Pieter Mondrian</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(13)">Expressionism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(13)">Edvard Munch</a></li>
+						<li><a href="#" onclick="setChildValue(14)">Gustav Klimt</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(15)">Futurism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(15)">Umberto Boccioni</a></li>
+						<li><a href="#" onclick="setChildValue(16)">Giacomo Balla</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(17)">Surrealism</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(17)">Joan Miro</a></li>
+						<li><a href="#" onclick="setChildValue(18)">Marc Chagall</a></li>
+					</ul></li>
+					<li><a href="#" onclick="setChildValue(19)">Pop Art</a>
+					<ul class="sub2__menu">
+						<li><a href="#" onclick="setChildValue(19)">Roy Lichtenstein</a></li>
+						<li><a href="#" onclick="setChildValue(20)">Keith Haring</a></li>
+					</ul></li>		
+					</ul></li>
 					<li><a href="./mygallery.html">My Gallery</a></li>
 					<li><a href="./login.html">Log in</a></li>
 				</ul>
@@ -143,6 +185,10 @@
 	<script src="js/slick.min.js"></script>
 	<script src="js/fresco.min.js"></script>
 	<script src="js/main.js"></script>
-
+	<script>
+	function setChildValue(index) {
+		window.location.href = "exhibition_pic.html?index=" + index;
+	}
+	</script>
 	</body>
 </html>
