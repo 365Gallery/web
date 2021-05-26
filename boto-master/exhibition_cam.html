@@ -180,56 +180,32 @@
 
 		switch (num){
 			case 0:
-				serverURL = serverURL + "?model=wreck.ckpt";
-				break;
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
+				serverURL = serverURL + "?model=wreck.ckpt&";
 				break;
 			case 4:
-				serverURL = serverURL + "?model=rain_princess.ckpt";
+				serverURL = serverURL + "?model=rain_princess.ckpt&";
 				break;
 			case 5:
-				serverURL = serverURL + "?model=wave.ckpt";
-				break;
-			case 6:
-				break;
-			case 7:
+				serverURL = serverURL + "?model=wave.ckpt&";
 				break;
 			case 8:
-				serverURL = serverURL + "?model=la_muse.ckpt";
+				serverURL = serverURL + "?model=la_muse.ckpt&";
 				break;
 			case 9:
 				break;
 			case 10:
-				serverURL = serverURL + "?model=udnie.ckpt";
+				serverURL = serverURL + "?model=udnie.ckpt&";
 				break;
 			case 11:
 				break;
 			case 12:
 				break;
 			case 13:
-				serverURL = serverURL + "?model=scream.ckpt";
-				break;
-			case 14:
-				break;
-			case 15:
-				break;
-			case 16:
-				break;
-			case 17:
-				break;
-			case 18:
-				break;
-			case 19:
-				break;
-			case 20:
+				serverURL = serverURL + "?model=scream.ckpt&";
 				break;
 		}
 
-		serverURL = serverURL + "&async=true"
+		serverURL = serverURL + "async=true"
 
 		$.ajax({
 	        type: "POST",
