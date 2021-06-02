@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -112,7 +113,7 @@
 				<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
 				<label for="conversion_filename">파일 선택</label>
 				<input type="file" id="conversion_filename"  class="upload-hidden" accept="image/*"/>
-				<button id='imgConversion'>변환</button>
+				<button id='imgConversion' onclick="conversionImage();">변환</button>
 			</form>
 		</div>		
 		<div class="move-btn-cam">
@@ -123,12 +124,12 @@
 				<img id="myimg" src ="" alt =""/>
 			</div>
 			<div class = "output-img">
-				<img src="http://34.64.152.92:8000/media/output.jpeg" name="imgReload" id="imgDownload"/>
+				<img src="" name="imgReload"/>
 			</div>
 		</div>
 		<div class ="filebox">
 			<br><br>
-			<button id="btnSave">저장</button></a>
+			<button id="btnSave" onclick="downloadImg('http://34.64.152.92:8000/media/output.jpeg');">다운로드</button></a>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
@@ -229,7 +230,7 @@
 
 	<!-- Script: server upload -->
 	<script>
-	$('#imgConversion').on('click', function(event) {
+	function conversionImage() {
     event.preventDefault();
     
     var form = $('#conversionForm')[0][1].files[0];
@@ -308,9 +309,9 @@
 			break;
 	}
 
-	serverURL = serverURL + "&async=true"
+	serverURL = serverURL + "&async=false"
     
-    $('#imgConversion').prop('disabled', true);
+    $('#imgConversion').prop('disabled', false);
 	
     $.ajax({
         type: "POST",
@@ -320,8 +321,23 @@
         processData: false,
         contentType: false,
         cache: false,
-        timeout: 600000});
-	})
+        timeout: 10000,
+        success: function(){
+        	timeTmp = new Date().getTime();
+	    	timeTmp = "?"+ timeTmp;
+
+	    	var target='imgReload';
+	    	newImage = "http://34.64.152.92:8000/media/output.jpeg";
+
+	    	idx = newImage.indexOf("?", 0);
+
+	    	if(idx > 0){
+	    		newImage = newImage.substr(0, idx);
+	    	}
+	    	document.images[target].src = newImage+timeTmp;
+	        }
+	    });
+	}
 	</script>
 
 	<!-- Script : connecting label & file -->
@@ -350,35 +366,42 @@
 		});
 	</script>
 
-	<!-- Script: Save image -->
+	<!-- Script: Download Image -->
 	<script>
-		$("#btnSave").click(function(){
-			html2canvas($("#imgDownload"), {
-				onrendered: function(canvas) {
-					canvas.toBlob(function(blob) {
-						saveAs(blob, "gallery_image.jpeg");
-					});
-				}
-			});
-		});
-	</script>
+		function dataURLtoBlob(dataurl) {
+		  var arr = dataurl.split(','),
+		    mime = arr[0].match(/:(.*?);/)[1],
+		    bstr = atob(arr[1]),
+		    n = bstr.length,
+		    u8arr = new Uint8Array(n);
+		  while (n--) {
+		    u8arr[n] = bstr.charCodeAt(n);
+		  }
+		  return new Blob([u8arr], {
+		    type: mime
+		  });
+		}
 
-	<!-- Script: Img reload -->
-	<script>
-		setInterval(function(){
-	    	timeTmp = new Date().getTime();
-	    	timeTmp = "?"+ timeTmp;
-
-	    	var target='imgReload';
-	    	newImage = document.images[target].src;
-
-	    	idx = newImage.indexOf("?", 0);
-
-	    	if(idx > 0){
-	    		newImage = newImage.substr(0, idx);
-	    	}
-	    	document.images[target].src = newImage+timeTmp;
-		}, 1000);
+		function downloadImg(imgSrc) {
+		  var image = new Image();
+		  image.crossOrigin = "anonymous";
+		  image.src = imgSrc;
+		  var fileName = image.src.split("/").pop();
+		  image.onload = function() {
+		    var canvas = document.createElement('canvas');
+		    canvas.width = this.width;
+		    canvas.height = this.height;
+		    canvas.getContext('2d').drawImage(this, 0, 0);
+		    if (typeof window.navigator.msSaveBlob !== 'undefined') {
+		      window.navigator.msSaveBlob(dataURLtoBlob(canvas.toDataURL()), fileName);
+		    } else {
+		      var link = document.createElement('a');
+		      link.href = canvas.toDataURL();
+		      link.download = '365Gallery';
+		      link.click();
+		    }
+		  };
+		}
 	</script>
 
 	<!-- Script: img parameter -->
@@ -394,4 +417,3 @@
 	</script>
 	</body>
 </html>
-
