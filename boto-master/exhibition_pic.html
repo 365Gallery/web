@@ -123,12 +123,12 @@
 				<img id="myimg" src ="" alt =""/>
 			</div>
 			<div class = "output-img">
-				<img src="" name="imgReload" alt=""/>
+				<img src="http://34.64.152.92:8000/media/output.jpeg" name="imgReload" id="imgDownload"/>
 			</div>
 		</div>
 		<div class ="filebox">
 			<br><br>
-			<a href="http://34.64.152.92:8000/media/output.jpeg" download="gallery_image"><button>저장</button></a>
+			<button id="btnSave">저장</button></a>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
@@ -155,6 +155,8 @@
 	<script src="js/jquery.slicknav.min.js"></script>
 	<script src="js/slick.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
 
 	<!-- Script : art description -->
 	<script>
@@ -345,6 +347,19 @@
 			$(this).siblings('.upload-name').val(filename);
 
 			}); 
+		});
+	</script>
+
+	<!-- Script: Save image -->
+	<script>
+		$("#btnSave").click(function(){
+			html2canvas($("#imgDownload"), {
+				onrendered: function(canvas) {
+					canvas.toBlob(function(blob) {
+						saveAs(blob, "gallery_image.jpeg");
+					});
+				}
+			});
 		});
 	</script>
 
