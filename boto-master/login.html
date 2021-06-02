@@ -42,60 +42,6 @@
 			</div>
 			<nav class="main__menu">
 				<ul class="nav__menu">
-					<li><a href="./index.html" class="menu--active">Home</a></li>
-					<li><a href="#" onclick="setChildValue(0)">Exhibition</a>
-						<ul class="sub__menu">
-					<li><a href="#" onclick="setChildValue(0)">Romanticism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(0)">William Turner</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(1)">Impressionism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(1)">Van Gogh</a></li>
-						<li><a href="#" onclick="setChildValue(2)">Seurat</a></li>
-						<li><a href="#" onclick="setChildValue(3)">Claude Monet</a></li>
-						<li><a href="#" onclick="setChildValue(4)">Leonid Afremov</a></li>
-						<li><a href="#" onclick="setChildValue(5)">Katsushika Hokusai</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(6)">Fauvism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(6)">Henri Matisse</a></li>
-						<li><a href="#" onclick="setChildValue(7)">Andre Derain</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(8)">Cubism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(8)">Pablo Picasso</a></li>
-						<li><a href="#" onclick="setChildValue(9)">Fernand Leger</a></li>
-						<li><a href="#" onclick="setChildValue(10)">Francis Picabia</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(11)">Abstractionism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(11)">Robert Delaunay</a></li>
-						<li><a href="#" onclick="setChildValue(12)">Pieter Mondrian</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(13)">Expressionism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(13)">Edvard Munch</a></li>
-						<li><a href="#" onclick="setChildValue(14)">Gustav Klimt</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(15)">Futurism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(15)">Umberto Boccioni</a></li>
-						<li><a href="#" onclick="setChildValue(16)">Giacomo Balla</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(17)">Surrealism</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(17)">Joan Miro</a></li>
-						<li><a href="#" onclick="setChildValue(18)">Marc Chagall</a></li>
-					</ul></li>
-					<li><a href="#" onclick="setChildValue(19)">Pop Art</a>
-					<ul class="sub2__menu">
-						<li><a href="#" onclick="setChildValue(19)">Roy Lichtenstein</a></li>
-						<li><a href="#" onclick="setChildValue(20)">Keith Haring</a></li>
-					</ul></li>		
-					</ul></li>
-					<li><a href="./mygallery.html">My Gallery</a></li>
-					<li><a href="./login.html">Log in</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -108,7 +54,7 @@
 			<div class="login__form">
 				<h2>Log-in</h2>
             <div class="login_id">
-                <h4>E-mail</h4>
+                <h4>ID</h4>
                 <input type="email" name="" id="" placeholder="Email">
             </div>
             <div class="login_pw">
@@ -116,7 +62,7 @@
                 <input type="password" name="" id="" placeholder="Password">
             </div>
             <div class="submit">
-                <input type="submit" value="submit">
+                <input type="button" id='submitBtn' value="submit">
             </div>
         </div>
 		</div>
@@ -145,6 +91,12 @@
 	function setChildValue(index) {
 		window.location.href = "exhibition_pic.html?index=" + index;
 	}
+	</script>
+
+	<script>
+		$('#submitBtn').on('click', function(event){
+			window.location.href = "index.html";
+		})
 	</script>
 	</body>
 </html>

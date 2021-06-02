@@ -903,6 +903,7 @@ ol {
 
 .cam-description {
 	float: right;
+
 }
 
 /*-------------------
@@ -951,6 +952,61 @@ ol {
 
 .fr-thumbnail-active {
 	border: 2px solid #8DB952;
+}
+
+.editbox {
+	display: inline-block; 
+	margin-left: 9%;
+}
+
+.editbox button { 
+	display: inline-block; 
+	padding: .5em .75em; 
+	color: #999; 
+	font-size: inherit; 
+	line-height: normal; 
+
+	background-color: #fdfdfd; 
+	cursor: pointer; 
+	border: 1px solid #ebebeb; 
+	border-bottom-color: #e2e2e2; 
+	border-radius: .25em; 
+}
+
+.gallerybox {
+	margin-left: 9%;
+	margin-right: 6%;
+	margin-top: 50px;
+	overflow: hidden;
+}
+
+.gallerybox .row {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.imgGrid1 {
+	align-content: center;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.imgGrid2 {
+	align-content: center;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.imgGrid3 {
+	align-content: center;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.imgGrid4 {
+	align-content: center;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 /*----------------

@@ -51,9 +51,11 @@
 					<ul class="sub2__menu">
 						<li><a href="#" onclick="setChildValue(0)">William Turner</a></li>
 					</ul></li>
-					<li><a href="#" onclick="setChildValue(1)">Impressionism</a>
+					<li><a href="#" onclick="setChildValue(2)">Impressionism</a>
 					<ul class="sub2__menu">
+						<!--
 						<li><a href="#" onclick="setChildValue(1)">Van Gogh</a></li>
+					-->
 						<li><a href="#" onclick="setChildValue(2)">Seurat</a></li>
 						<li><a href="#" onclick="setChildValue(3)">Claude Monet</a></li>
 						<li><a href="#" onclick="setChildValue(4)">Leonid Afremov</a></li>
@@ -97,7 +99,6 @@
 					</ul></li>		
 					</ul></li>
 					<li><a href="./mygallery.html">My Gallery</a></li>
-					<li><a href="./login.html">Log in</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -107,66 +108,29 @@
 	<!-- About Page -->
 	<div class="gallery__page">
 		<div class="gallery__warp">
-			<div class="row">
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/1.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/1.jpg" alt="">
-					</a>
+			<div class="filebox" style="display:none;">
+				<form method="POST" enctype="multipart/form-data" id="uploadForm">
+					<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
+					<label for="ex_filename">파일 선택</label>
+					<input type="file" id="ex_filename"  class="upload-hidden" accept="image/*"/>
+					<button id='btnUpload'>추가</button>
+					
+				</form>
+			</div>
+				<div class='editbox'>
+					<button id='btnDel' onclick='imgdelete()' style="display:none;">삭제</button>
+					<button id='btnEdit' onclick='editmode()'>편집</button>
 				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/2.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/2.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/3.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/3.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/4.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/4.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/5.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/5.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/6.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/6.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/7.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/7.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/8.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/8.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/9.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/9.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/10.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/10.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/11.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/11.jpg" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6">
-					<a class="gallery__item fresco" href="img/gallery/12.jpg" data-fresco-group="gallery">
-						<img src="img/gallery/12.jpg" alt="">
-					</a>
+				<div class="gallerybox">	
+				<div class="row">
+					<div class="imgGrid1">
+					</div>
+					<div class="imgGrid2">
+					</div>
+					<div class="imgGrid3">
+					</div>
+					<div class="imgGrid4">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -191,11 +155,128 @@
 	<script src="js/fresco.min.js"></script>
 	<script src="js/main.js"></script>
 
+	<!-- Script: img parameter -->
 	<script>
 	function setChildValue(index) {
 		window.location.href = "exhibition_pic.html?index=" + index;
 	}
 	</script>
+
+	<!-- Script: connecting label & file -->
+	<script>
+		var sel_file;
+
+		$(document).ready(function(){ 
+			var fileTarget = $('.filebox .upload-hidden'); 
+
+			fileTarget.on('change', function(){ // 값이 변경되면
+
+			if(window.FileReader){ // modern browser 
+				var filename = $(this)[0].files[0].name; 
+			} 
+			else { // old IE 
+				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+
+			// 추출한 파일명 삽입 
+			$(this).siblings('.upload-name').val(filename);
+
+			}); 
+		});
+	</script>
 	
+	<!-- Script: Gallery upload-->
+	<script>
+		$(document).ready(function() {
+			$('#btnUpload').on('click', function(event) {
+		    event.preventDefault();
+		    
+		    var form = $('#uploadForm')[0][1].files[0];
+		    var data = new FormData();
+			data.append('file', form, form.name);
+
+			var serverURL = "http://34.64.152.92:8000/api/v1/gallery/";
+		    
+		    $('#btnUpload').prop('disabled', true);
+			
+		    $.ajax({
+		        type: "POST",
+		        enctype: 'multipart/form-data',
+		        url: serverURL,
+		        data: data,
+		        processData: false,
+		        contentType: false,
+		        cache: false,
+		        timeout: 600000});
+
+		    setTimeout("location.reload(true)", 1000);
+			});
+		})
+	</script>
+
+	<!-- Script: Gallery load -->
+	<script>
+		$(document).ready(function() {
+			$.getJSON("http://34.64.152.92:8000/api/v1/gallery/", function(result) {
+				var i = 0;
+				while (result['data'][i]){
+					var gridName;
+					if (i % 4 == 0)
+						gridName = '.imgGrid1';
+					else if (i % 4 == 1)
+						gridName = '.imgGrid2';
+					else if (i % 4 == 2)
+						gridName = '.imgGrid3';
+					else if (i % 4 == 3)
+						gridName = '.imgGrid4';
+
+					$(gridName).prepend('<input type="checkbox" class="imgCheck" name="images" value=' + result['data'][i]['pk'] + ' " style="display: none;"/><a class="gallery__item fresco" href=' + result['data'][i]['file'] + '?' + result['data'][i]['pk']+ 'data-fresco-group="gallery"><div class="galleryImg"> <img src=' + result['data'][i]['file'] + ' alt=""></div></a>');
+					i++;
+				}
+			});
+		})
+	</script>
+
+	<!-- Script: Functions -->
+	<script>
+	function editmode(){
+		const btnElement = document.getElementById('btnEdit');
+		var html;
+
+		if (btnElement.innerHTML == '편집'){
+			html = '완료';
+			$('#btnDel').show();
+			$('.imgCheck').show();
+			$('.filebox').show();
+		}
+		else {
+			html = '편집';
+			$('#btnDel').hide();
+			$('.imgCheck').hide();
+			$('.filebox').hide();
+		}
+
+		btnElement.innerHTML = html;
+	}
+
+	function imgdelete(){
+		var checkObj = document.getElementsByName("images");
+		var num = checkObj.length;
+		var delURL;
+
+		for (i = 0; i < num; i++){
+			if (checkObj[i].checked == true){
+				delURL = "http://34.64.152.92:8000/api/v1/gallery/" + checkObj[i].value + "/";
+				$.ajax({
+					url: delURL,
+					method: "DELETE"
+				})
+			}
+		}
+
+		setTimeout("location.reload(true)", 1000);
+
+	}
+	</script>
 	</body>
 </html>
