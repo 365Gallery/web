@@ -752,7 +752,7 @@ ol {
 	color: #999; 
 	font-size: inherit; 
 	line-height: normal; 
-
+	margin-right: 5px;
 	background-color: #fdfdfd; 
 	cursor: pointer; 
 	border: 1px solid #ebebeb; 
@@ -838,6 +838,7 @@ ol {
 	-moz-appearance: none; 
 	appearance: none; 
 }
+
 
 .img-box { /* 이미지가 표시될 지역 */ 
 	text-align: center;
