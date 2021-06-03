@@ -155,90 +155,85 @@
 	<script src="js/fresco.min.js"></script>
 	<script src="js/main.js"></script>
 
-	<!-- Script: img parameter -->
+	<!-- Script: Gallery script-->
 	<script>
-	function setChildValue(index) {
-		window.location.href = "exhibition_pic.html?index=" + index;
+	// gallery: add
+	$('#btnUpload').on('click', function(event) {
+	    event.preventDefault();
+	    
+	    var form = $('#uploadForm')[0][1].files[0];
+	    var data = new FormData();
+		data.append('file', form, form.name);
+
+		var serverURL = "http://34.64.152.92:8000/api/v1/gallery/";
+	    
+	    $('#btnUpload').prop('disabled', true);
+		
+	    $.ajax({
+	        type: "POST",
+	        enctype: 'multipart/form-data',
+	        url: serverURL,
+	        data: data,
+	        processData: false,
+	        contentType: false,
+	        cache: false,
+	        timeout: 10000,
+	        success: function(){
+				$('.imgGrid1').empty();
+				$('.imgGrid2').empty();
+				$('.imgGrid3').empty();
+				$('.imgGrid4').empty();
+				galleryLoad();
+			}
+	    });
+	});
+
+	// gallery: delete
+	function imgdelete(){
+		var checkObj = document.getElementsByName("images");
+		var num = checkObj.length;
+		var delURL;
+
+		for (i = 0; i < num; i++){
+			if (checkObj[i].checked == true){
+				delURL = "http://34.64.152.92:8000/api/v1/gallery/" + checkObj[i].value + "/";
+				$.ajax({
+					url: delURL,
+					method: "DELETE",
+					success: function(){
+						$('.imgGrid1').empty();
+						$('.imgGrid2').empty();
+						$('.imgGrid3').empty();
+						$('.imgGrid4').empty();
+						galleryLoad();
+					}
+				})
+			}
+		}
 	}
-	</script>
 
-	<!-- Script: connecting label & file -->
-	<script>
-		var sel_file;
+	// gallery: img load
+	function galleryLoad(){
+		$.getJSON("http://34.64.152.92:8000/api/v1/gallery/", function(result) {
+			var i = 0;
+			while (result['data'][i]){
+				var gridName;
+				if (i % 4 == 0)
+					gridName = '.imgGrid1';
+				else if (i % 4 == 1)
+					gridName = '.imgGrid2';
+				else if (i % 4 == 2)
+					gridName = '.imgGrid3';
+				else if (i % 4 == 3)
+					gridName = '.imgGrid4';
 
-		$(document).ready(function(){ 
-			var fileTarget = $('.filebox .upload-hidden'); 
-
-			fileTarget.on('change', function(){ // 값이 변경되면
-
-			if(window.FileReader){ // modern browser 
-				var filename = $(this)[0].files[0].name; 
-			} 
-			else { // old IE 
-				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-
-			// 추출한 파일명 삽입 
-			$(this).siblings('.upload-name').val(filename);
-
-			}); 
+				$(gridName).prepend('<input type="checkbox" class="imgCheck" name="images" value=' + result['data'][i]['pk'] + ' " style="display: none;"/><a class="gallery__item fresco" href=' + result['data'][i]['file'] + '?' + result['data'][i]['pk']+ 'data-fresco-group="gallery"><div class="galleryImg"> <img src=' + result['data'][i]['file'] + ' alt=""></div></a>');
+				i++;
+			}
 		});
-	</script>
-	
-	<!-- Script: Gallery upload-->
-	<script>
-		$(document).ready(function() {
-			$('#btnUpload').on('click', function(event) {
-		    event.preventDefault();
-		    
-		    var form = $('#uploadForm')[0][1].files[0];
-		    var data = new FormData();
-			data.append('file', form, form.name);
+	}
 
-			var serverURL = "http://34.64.152.92:8000/api/v1/gallery/";
-		    
-		    $('#btnUpload').prop('disabled', true);
-			
-		    $.ajax({
-		        type: "POST",
-		        enctype: 'multipart/form-data',
-		        url: serverURL,
-		        data: data,
-		        processData: false,
-		        contentType: false,
-		        cache: false,
-		        timeout: 600000});
-
-		    setTimeout("location.reload(true)", 1000);
-			});
-		})
-	</script>
-
-	<!-- Script: Gallery load -->
-	<script>
-		$(document).ready(function() {
-			$.getJSON("http://34.64.152.92:8000/api/v1/gallery/", function(result) {
-				var i = 0;
-				while (result['data'][i]){
-					var gridName;
-					if (i % 4 == 0)
-						gridName = '.imgGrid1';
-					else if (i % 4 == 1)
-						gridName = '.imgGrid2';
-					else if (i % 4 == 2)
-						gridName = '.imgGrid3';
-					else if (i % 4 == 3)
-						gridName = '.imgGrid4';
-
-					$(gridName).prepend('<input type="checkbox" class="imgCheck" name="images" value=' + result['data'][i]['pk'] + ' " style="display: none;"/><a class="gallery__item fresco" href=' + result['data'][i]['file'] + '?' + result['data'][i]['pk']+ 'data-fresco-group="gallery"><div class="galleryImg"> <img src=' + result['data'][i]['file'] + ' alt=""></div></a>');
-					i++;
-				}
-			});
-		})
-	</script>
-
-	<!-- Script: Functions -->
-	<script>
+	// gallery: mode change
 	function editmode(){
 		const btnElement = document.getElementById('btnEdit');
 		var html;
@@ -259,24 +254,31 @@
 		btnElement.innerHTML = html;
 	}
 
-	function imgdelete(){
-		var checkObj = document.getElementsByName("images");
-		var num = checkObj.length;
-		var delURL;
-
-		for (i = 0; i < num; i++){
-			if (checkObj[i].checked == true){
-				delURL = "http://34.64.152.92:8000/api/v1/gallery/" + checkObj[i].value + "/";
-				$.ajax({
-					url: delURL,
-					method: "DELETE"
-				})
-			}
-		}
-
-		setTimeout("location.reload(true)", 1000);
-
+	// gallery: exhibition menu parameter
+	function setChildValue(index) {
+		window.location.href = "exhibition_pic.html?index=" + index;
 	}
+
+	var sel_file;
+
+	// ready function
+	$(document).ready(function(){ 
+		var fileTarget = $('.filebox .upload-hidden'); 
+
+		// file name connecting
+		fileTarget.on('change', function(){
+			if (window.FileReader){ 
+				var filename = $(this)[0].files[0].name; 
+			} 
+			else {
+				var filename = $(this).val().split('/').pop().split('\\').pop();
+			} 
+			$(this).siblings('.upload-name').val(filename);
+		});
+
+		// gallery data load
+		galleryLoad();
+	});
 	</script>
 	</body>
 </html>
