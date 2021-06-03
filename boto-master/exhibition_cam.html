@@ -340,5 +340,83 @@
 		  };
 		}
 	</script>
+
+	<!-- Script : art description -->
+	<script>
+		$(document).ready(function() {
+			var num = location.href.substr(location.href.lastIndexOf('=') + 1);
+			num = num - '0'
+
+			
+		$('.art_description').empty();
+		 switch (num){
+			case 0:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Joseph Mallord William Turner</h3><div class="about__meta"><img src="img/exhibition/wreck.jpg" alt=""><div class="about__meta__info"><h5>The Shipwreck of the Minotaur</h5><p>Joseph Mallord William Turner | 1805 | 171 x 240 cm | Oil on canvas</p></div></div><p>조지프 말로드 윌리엄 터너(Joseph Mallord William Turner 1775년 4월 23일 ~ 1851년 12월 19일)는 영국의 화가이다. 런던에서 이발사의 아들로 태어났다. 일찍부터 회화에 손을 대어 왕립 미술원에서 그림 수업을 한 뒤, 잠깐 사이에 준회원에서 27세 되던 1802년에 정회원으로 올라갔다. 여러 곳의 풍습과 풍경을 주로 그렸으며, 특히 빛의 묘사에서 획기적인 표현을 남긴 화가이다.</p><p>작품에는 《차일드 해럴드의 순례》(1832), 《전함 테메레이르호(號)》(1839), 《안개 속의 해돋이》, 《비·증기·속력》, 《황금가지》 등이 있는데, 원숙한 빛의 표현이 아름답다. 이상하게도 제자나 후계자가 없는 화가로서 고독한 성격이었으며, 본가 외에 체르시에 은거하면서 이름을 바꾸어 생활을 했기 때문에 아는 사람도 없이 그 곳에서 숨을 거두었다.</p></div>');
+				break;
+			/*
+			case 1:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>	Vincent van Gogh</h3><div class="about__meta"><img src="img/exhibition/starry_night.jpg" alt=""><div class="about__meta__info"><h5>The Starry Night</h5><p>Vincent Van Gogh | 1889 | 73.7 x 92.1 cm | Oil on canvas</p></div></div><p>《별이 빛나는 밤》(The Starry Night)은 네덜란드의 화가 빈센트 반 고흐의 가장 널리 알려진 작품이다. 정신병을 앓고 있을 당시의 고흐가 그린 작품이다. 1889년 상 레미의 정신병원에서 나와 기억으로 그린 그림이지만, 당시 고흐는 정신적 질환으로 인한 고통을 떠올려 그림 속의 소용돌이로 묘사했다.</p><p>비연속적이고 동적인 터치로 그려진 하늘은 굽이치는 두꺼운 붓놀림으로 사이프러스와 연결되고, 그 아래의 마을은 대조적으로 고요하고 평온한 상태를 보여준다. 교회 첨탑은 그의 고향인 네덜란드를 연상시킨다. 그는 병실 밖으로 내다보이는 밤 풍경을 상상과 결합시켜 그렸는데, 이는 자연에 대한 반 고흐의 내적이고 주관적인 표현을 구현하고 있다. 수직으로 높이 뻗어 땅과 하늘을 연결하는 사이프러스는 전통적으로 무덤이나 애도와 연관된 나무지만, 반 고흐는 죽음을 불길하게 보지 않았다.</p></div>');
+				break;
+				*/
+			case 2:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>	Georges-Pierre Seurat</h3><div class="about__meta"><img src="img/exhibition/grande_jatte.jpg" alt=""><div class="about__meta__info"><h5>그랑드 자트 섬의 센 강, 봄</h5><p>Georges Pierre Seurat | 1888 | 82 x 65 cm | Oil on canvas</p></div></div><p>강변이나, 해안의 풍경을 즐겨 다루는 것은 인상파의 공통점이기도 하다. 쇠라의 작품 가운데서도 강변과 해안 풍경이 적지 않다. <그랑드 자트 섬의 일요일 오후>에서 보는 시각에서 강 쪽으로 더욱 나간 장면이고, 화면의 중심은 강에 떠 있는 돛배와 카누에 있다. 원경의 해안의 수평선과 근경의 둑이 보여 주는 사선은 쇠라의 풍경화에서는 자주 나타나는 구도인데, 수평과 수직, 그리고 사선을 통한 긴밀한 화면의 밀도를 엿볼 수 있다. 점묘는 더욱 세분 화되어 마치 상감(象嵌)을 하듯 색채를 조탁(彫琢)해 넣었다. 화창한 봄날의 신록과 빛나는 강 물, 그리고 흰 돛의 조화는 풍부한 계절감을 여실히 드러내고 있다.</p></div>');
+				break;
+			case 3:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Claude Monet</h3><div class="about__meta"><img src="img/exhibition/parasol.jpg" alt=""><div class="about__meta__info"><h5>Woman with a Parasol</h5><p>Claude Monet | 1875</p></div></div><p>1870년대 중반, 이 무렵 그려진 <양산을 든 여인>은 사랑하는 가족과 행복한 한 때를 보내고 있는 화가의 행복이 느껴지는 작품이다. 파란 하늘 새털구름 아래 사랑하는 아내, 아들과 함께 산책을 하던 모네는 급히 캔버스를 길가에 세우고 붓을 놀리기 시작했다. 따사로운 햇살, 산들거리는 바람, 노오란 색의 이름 모를 들꽃들, 햇빛을 피하기 위해 초록색 양산을 쓴 까미유, 바람결에 나풀거리는 하얀 스커트와 스카프, 자신처럼 귀여운 모자를 쓰고 뛰어놀던 장. 모네는 너무나 평화롭고 행복한 광경에 절로 가슴이 벅차 올랐을 것이다. 그는 재빠르게 그 순간을 화폭에 담았다. 찬란한 태양과 그 아래서 빛나는 모든 것들이 캔버스에 옮겨졌다. 길을 걷다 멈춰서서 그런 모네를 돌아보는 까미유의 얼굴은 약간 상기된 듯 보인다. 흘러가는 구름 아래 행복한 순간이 지나가고 있었다. 그 빛나는 순간에 대한 모네의 애틋한 마음이 느껴진다.</p><p>“너무나 사랑했고 너무나 소중했던 사람이 죽어가고 있습니다. 점점 창백해지는 그녀의 얼굴에서 빛의 변화를 쫓는 제 자신을 발견합니다. 이제 영원히 나의 곁을 떠나려 하는 사랑하는 이의 마지막 모습을 그리고 싶었습니다.”</p></div>');
+				break;
+			case 4:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Leonid Afremov</h3><div class="about__meta"><img src="img/exhibition/rain_princess.jpg" alt=""><div class="about__meta__info"><h5>Rain Princess</h5><p>Leonid Afremov | 1983 | 60 x 60 cm, 24 x 24 in | Palette Knife, Oil Paint, Canvas</p></div></div><p>레오니드 아프레모브(Leonid Afremov)는 벨라루스 태생의 후기인상주의 작가로 구소련 공산당의 억압을 피해 이스라엘로 망명, 이후 미국을 거쳐 현재는 멕시코에서 작품 활동을 하고 있다. 캔버스에 붓이 아닌 팔레트 나이프만을 이용해 그림을 그리는 독특한 화법으로 주로 사랑을 주제로 담는다. 그의 작품에서는 비가 자주 등장하는 소재이다. 다른 화가들의 작품들과 확연히 구분되는 색감으로 유명해지기 시작했다.</p></div>');
+				break;
+			case 5:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Katsushika Hokusai</h3><div class="about__meta"><img src="img/exhibition/wave.jpg" alt=""><div class="about__meta__info"><h5>The Great Wave off Kanagawa</h5><p>Katsushika Hokusai | 1831 | 25.7 x 37.8 cm, 10.1 x 14.9 in | color woodblock</p></div></div><p>가나가와 해변의 높은 파도 아래(神奈川沖浪裏 가나가와오키나미우라)는 가쓰시카 호쿠사이가 제작한 목판화이다. 1825년 무렵에 간행된 우키요에 연작 《후가쿠 36경》 중 하나로, 거대한 파도와 배, 배경에 후지산이 그려져있다. 호쿠사이의 작품 중 가장 유명하며 세계에서 알려진 가장 유명한 일본 미술 작품의 하나이다. 현재 영국 런던의 대영박물관에 소장되어 있다.</p><p>이 작품에서는 거대한 파도가 험한 바다를 지배하는 가운데 그 파도에 휩쓸리기 직전인 조그만 배 세 척을 담아냈다. 배를 삼키기 직전에 가장 높은 지점에서 정지한 파도는 마치 날카로운 발톱과 같은 거품을 내뿜고 있는데, 이는 자연의 압도적인 힘을 강조하며 자연의 힘에 비하면 인간의 존재는 보잘것 없다는 것을 암시하고 있다. 파도 왼편에는 제목과 호쿠사이의 서명 (낙관)이 있는데, "北斎改爲一筆" (호쿠사이였던 이츠가 그림)라고 씌여 있어 이전에는 호쿠사이였던 예명을 이츠 (爲一)로 바꾸었음을 알 수 있다. 그 뒤로는 아주 작게 후지산을 그려내, 정적인 분위기와 파도를 대비시켜 전경에 긴장감을 부여하게 했다. 눈 덮인 후지산 뒤의 미묘한 색조 변화는 그 주변에 걱정스러운 분위기를 도출한다. 이른바 보카시 (暈し)라 불리는 이 기법은 판화를 인쇄하기 전에 목판에서 물감을 조금 닦아내 여리게 보이도록 한 것이다.</p></div>');
+				break;
+			case 6:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Henri Émile-Benoit Matisse</h3><div class="about__meta"><img src="img/exhibition/dance.jpg" alt=""><div class="about__meta__info"><h5>The Dance</h5><p>Henri Émile-Benoit Matisse | 1910 | 390 x 260 cm</p></div></div><p><댄스>의 춤추는 사람들은 지구상에 발을 붙히고 춤을 추는 모습이 아닌, 우주속의 무중력 상태에서 몸을 맏기듯이 춤을 추는 것 처럼 보인다. 그림의 중앙에는 그림의 다이나믹한 움직임을 만들어내는 원이 나타나 있다. 왼쪽에서 춤을 추는 사람은 팽팽한 긴장된 자세를 유지하며 묵직한 움직임으로 나머지 함께 춤을 추는 사람들을 리드하며 이끄는 중심축처럼 움직이고 있다. 마티스의 그림 안의 이 춤은 ‘삶과 리듬’을 만들어내며, 환희과 에너지, 삶의 열정이 아름답게 그려져 있다. 더불어 시각적인 음악 또한 함께 깃들어져 있다. 열정적인 느낌으로 가득 차 있는 그림 속의 운율와 힘은 단순화된 인간의 신체와 푸른 공간의 빛과 초록대지의 평면적인 느낌을 너무나 아름답게 표현해 냈음에, 이토록 세계 안의 예술역사의 근원지였던 유럽의 손꼽히는 명작이라 할 수 있다.</p></div>');
+				break;
+			case 7:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>André Derain</h3><div class="about__meta"><img src="img/exhibition/matisse.jpg" alt=""><div class="about__meta__info"><h5>Portrait of Matisse</h5><p>André Derain | 1905 | 46 x 34.9 cm | Oil paint on canvas</p></div></div><p>앙드레 드랭(André Derain, 1880년 6월 10일 ~ 1954년 9월 8일)은 프랑스의 예술가, 화가, 조각가이다. 앙리 마티스와 함께 야수파을 주창하였다. 생생하고 부자연스러운 색상으로 인해 비평가 루이 복셀은 그들의 작품을 "les Fauves" 또는 "야수"라고 조소적으로 불렀고, 이것이 야수파 운동의 시작이 되었다. 미술 평론가 T. G Rosenthal는 "모네 이후로 런던을 그렇게 신선하게 묘사하면서도 영국적인 본질을 유지하는 사람은 없었다. 드랭은 템즈강을 묘사할 때 여러 개의 점을 찍는 점묘법을 사용하였는데, 지금까지도 그 점들은 더욱 커지고 있기 때문에, 분할 점묘라고 불리는 색상의 분리 그 이상이며, 햇빛을 받으며 흐르는 강물 안에서 분할된 색상을 효과적으로 전달한다."고 평가하였다.</p></div>');
+				break;
+			case 8:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Pablo Ruiz Picasso</h3><div class="about__meta"><img src="img/exhibition/avignon.jpg" alt=""><div class="about__meta__info"><h5>아비뇽의 처녀들(Les Demoiselles d Avignon)</h5><p>Pablo Ruiz Picasso | 1907 | 233.7 x 243.9 cm </p></div></div><p>1906년부터 1년간에 걸쳐 제작된 미완성의 대작인 이 작품은 작가 피카소의 화력(畵歷)에 중요한 전기를 보여주는 것일 뿐만 아니라 20세기 회화로서도 기념비적 가치의 전환을 의미하는 의미 깊은 작품이다. 아비뇽이란 바르셀로나의 서민가에 있는 마도로스 상대의 창녀가 출몰하는 뒷거리의 명칭이며 화면에 그린 것은 이 뒷거리에 있는 창부들이다. 미술사 최초의 입체주의 작품으로 평가받는다.</p><p>이 작품에는 벌써 청색 시대의 정감적인 침울함이 없고, 대상은 주제를 전혀 의식하지 못할 정도로 비정 형태의 구성으로 포착하였다. 이것은 피카소가 스스로 제작에 가한 제1의 파괴인 것이다. 《아비뇽의 처녀들》은 최초에 세잔의 《수욕》의 구도를 모방하여 나부의 군상을 그리려던 목적이라 말하지만, 세잔의 주체적인 색면 배합을 진일보하여 피카소는 형태의 분해와 화가의 내적인 질서에 따르는 그 재배분을 노렸던 것이다.</p></div>');
+				break;
+			case 9:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Joseph Fernand Henri Léger</h3><div class="about__meta"><img src="img/exhibition/lecture.jpg" alt=""><div class="about__meta__info"><h5>La Lecture</h5><p>Joseph Fernand Henri Léger </p></div></div><p>페르낭 레제는 원래 건축가였다. 1907년, 폴 세잔의 회고전에서 큰 감명을 받은 레제는 이후, 아방가르드 미술가들과 친하게 지내면서 피카소와 조르주 블라크의 입체주의 양식의 그림들을 접하게 되었고, 입체주의(큐비즘) 양식에서 비롯된 자신만의 독창적인 표현법을 개발했다. 레제는 입체주의 양식에서 비롯된 독창적인 표현법을 개발했다. "튀비슴(tubism)"이라 명명된 레제의 양식은 색채가 풍부한 원통형의 추상적인 형태들에 초점을 맞추었다. 원통 모양의 형태들은 유선형이 되었고, 수수께끼처럼 복잡한 기계들이 캔버스를 차지했다. 그의 작품 속에 형상들은 이제 로봇의 특성까지도 드러내기 시작했다. 1920년대 레제의 작품에는 순수주의(purism)양식을 받아들여 균일한 단색의 면과 굵고 검은 윤곽선을 사용하기 시작했다.</p></div>');
+				break;
+			case 10:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Francis Picabia</h3><div class="about__meta"><img src="img/exhibition/udnie.jpg" alt=""><div class="about__meta__info"><h5>Udnie (Young American Girl, The Dance)</h5><p>Francis Picabia | 1913 | 290 x 300 cm | oil on canvas</p></div></div><p>프란시스 피카비아는 피카소, 마티스, 뒤샹과 동시대를 살았지만, 그들의 그림자에 가려져 무명에 가깝게 미술사의 그늘에서 서성거렸던 화가, 작가로서의 시그니처 스타일을 고수하지 않았던 자유인이다. 그는 부유한 쿠바계 아버지, 프랑스계 어머니 사이에서 외동아들로 태어나 도박과 요트, 레이스카와 여성을 좋아했던 플레이보이였다. 따라서 그림은 그에게 생업이 아니라 취미였고, 고군분투 화가로서의 치열함보다 장난끼와 냉소주의, 쾌락주의로 살아간 나르시스트 화가였다고 할 수 있다. 피카비아는 미술 외에도 시, 작가, 영화감독, 그래픽 디자이너, 세트 디자이너, 편집인, 발행인, 퍼포먼스 아티스트, 신표현주의, 추상적 표현주의, 팝아트까지 수많은 장르의 봉우리를 유희적으로 정복하며 살다간 아티스트였다.</p><p> "I am a beutiful monster who shares his secrets with the wind. What I love most in others is myself." - Francis Picabia</p></div>');
+				break;
+			case 11:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Robert Delaunay</h3><div class="about__meta"><img src="img/exhibition/rythm.jpg" alt=""><div class="about__meta__info"><h5>Rythme n°1</h5><p>Robert Delaunay | 1938 | 529 x 592 cm | painting</p></div></div><p>로베르 들로네(Robert Delaunay, 1885년 4월 12일 ~ 1941년 10월 25일)는 프랑스의 화가이다. 로베르 들로네는 신인상파의 색채 분할에 큰 관심을 가지고 이를 연구하였다고 한다. 그의 에펠탑 그림들을 보면 초기 작품에서는 탑의 형태를 비교적 확실히 구분할 수 있다. 하지만 뒤로 갈수록 쪼개지고 조각나서 주변 배경에 섞여드는 것을 볼 수 있다. 이 같은 입체파 양식은 사물의 형태가 쪼개지고 재조립되면서 결국에는 세모, 네모, 동그라미만 남는 ‘추상화의 시조새’가 된다.</p></div>');
+				break;
+			case 12:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Pieter Mondrian</h3><div class="about__meta"><img src="img/exhibition/mondrian.jpg" alt=""><div class="about__meta__info"><h5>검정 빨강 회색 노랑 파랑 의 구성</h5><p>Pieter Mondrian | 1920 | 90 x 91 cm | oil on canvas</p></div></div><p>몬드리안은 추상화의 초기 화가에 속하며, 네덜란드 구성주의 회화의 거장이다. 빈센트 반 고흐와 야수파에서 많은 영향을 받은 예술가이다. 그는 자신이 신조형주의(Neo-Plasticism)라고 부른 비구상적인 형태를 발전시켰다. 그의 그림들은 가로와 세로의 검은 선의 격자(grid)와 삼원색을 사용한 것들이 많다.</p><p>몬드리안의 특징을 간단히 요약하면 차가운 추상, 수직, 수평, 삼원색, 무채색이라고 할 수 있다. 몬드리안은 자신의 작품을 "우주의 진리, 근원을 표현한 작품"이라고 하였으며 이러한 그의 주장은 그가 진지하게 관심을 가졌던 신지학에 기반을 둔다. 원색을 많이 사용하여 리듬감이 느껴지는 것을 볼 수 있다.</p></div>');
+				break;
+			case 13:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Edvard Munch</h3><div class="about__meta"><img src="img/exhibition/The_Scream.jpg" alt=""><div class="about__meta__info"><h5>The Scream</h5><p>Edvard Munch | 1983 | 73.5 x 91 cm, 28.9 x 36 in | Oil, tempera, pastel and crayon on cardboard</p></div></div><p>《절규》(The Scream of Nature; 1893-1910년)는 노르웨이의 예술가 에드바르 뭉크의 연작 중 하나인 표현주의 그림으로, 핏빛의 하늘을 배경으로 괴로워하는 인물을 묘사하였다. 배경의 풍경은 노르웨이 오슬로(당시 크리스티아니아)의 이케베르크 언덕에서 보이는 오슬로피오르이다.</p><p>"친구 둘과 함께 길을 걸어 가고 있었다. 해질녘이었고 나는 약간의 우울함을 느꼈다. 그때 갑자기 하늘이 핏빛으로 물들기 시작했다. 그자리에 멈춰선 나는 죽을 것만같은 피로감으로 난간에 기댔다. 그리고 핏빛하늘에 걸친 불타는 듯한 구름과 암청색 도시가 있었다. 그때 자연을 관통하는 그치지 않는 커다란 비명 소리를 들었다."뭉크가 1892년 1월에 남긴 글은 매우 유명하다.</p></div>');
+				break;
+			case 14:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Gustav Klimt</h3><div class="about__meta"><img src="img/exhibition/kiss.jpg" alt=""><div class="about__meta__info"><h5>The Kiss</h5><p>Gustav Klimt | 1908 | 180 x 180 cm | oil and gold leaf on canvas</p></div></div><p>구스타프 클림트는 오스트리아의 상징주의 화가이자 빈 분리파 운동의 주요 회원이다. 작품의 주요 주제는 여성의 신체로, 그의 작품은 노골적인 에로티시즘으로 유명하다. 키스는 클림트가 1907-1908년 황금시기에 그린 그림이다. 이 시기는 클림트의 전성기로 도금하는 기법으로 다수의 그림을 남겼다.</p><p>이 이미지는 은밀한 한순간을 상징할 뿐 아니라 두 남녀의 일반적인 포옹 장면이기도 하다. 남성은 머리와 목, 연인의 입술 주변에 닿아있는 손만 드러냈고, 여성은 얼굴, 팔, 손, 그리고 발을 드러내고있다. 그리고 이 둘을 둘러싼 넓은 면에는 섬세하게 장식된 기하학적인 패턴과 꽃 장식이 가득 그려졌는데. 클림트는 두 연인의 모습을 최소한으로 드러내어 그 안에 숨겨진 둘만의 은밀함을 더욱 상상하게 한다. </p></div>');
+				break;
+			case 15:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Umberto Boccioni</h3><div class="about__meta"><img src="img/exhibition/cyclist.jpg" alt=""><div class="about__meta__info"><h5>축구선수의 역동성(Dynamism of a Cyclist)</h5><p>Umberto Boccioni | 1913 | 70 x 95 cm | oil on canvas</p></div></div><p>이탈리아의 미래파 예술가 움베르토 보초니 (1882–1916)은 속도, 현대적인 운송 방법 및 역동적인 움직임 감각의 묘사에 대한 미래주의적 집착을 보여준다. 큐비스트의 어법으로 해체되어 있는 이 그림의 주제는 열심히 달리고 있는 축구선수이다. 축구선수의 이미지는 붉은 색과 푸른 색을 주조로 표현되고 있는데, 보치오니는 운동하는 신체만을 표현하고 있는 것이 아니라, 선수의 몸에서 발산되는 에너지와 주변의 작용을 한꺼번에 표현해 주고 있다.</p></div>');
+				break;
+			case 16:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Giacomo Balla</h3><div class="about__meta"><img src="img/exhibition/light.jpg" alt=""><div class="about__meta__info"><h5>가로등(Street Light)</h5><p>Giacomo Balla | 1909 | 174.7 × 114.7 cm | Oil on canvas</p></div></div><p>"새로운 아름다움, 바로 속도의 아름다움 때문에 세계가 빛나게 될 것이다. 달리는 자동차는 승리의 여신상, 사모트라케의 니케보다 아름답다." 미래주의 창시자 마리네티의 선언이다. 1910년 4명의 동료와 함께 <미래주의 화가 선언>을 발표한 자코모 발라도 달리는 자동차의 다이내믹한 연속성을 포착, 그들이 찬양한 세계관을 화면에 구현했다. 이름 그대로 미래파는 과거의 모든 전통과 가치를 부정했다. 대신 새로움과 젊음, 기계와 운동, 힘과 속도를 예찬했다.</p><p>위 작품은 도시의 밤거리를 밝히는 가로등을 그린 것으로 현대 기술의 상징인 전기에너지를 찬양하고 있다. 오른편 위에 초승달은 자연을 상징하며, 발라는 기술의 상징인 전등과 자연의 상징인 달을 대비시켜 과학기술이 자연보다 위대하다고 말하고 있다.</p></div>');
+				break;
+			case 17:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Joan Miro</h3><div class="about__meta"><img src="img/exhibition/animal.jpg" alt=""><div class="about__meta__info"><h5>Animal Composition</h5><p>Joan Miro</p></div></div><p>미로는 바르셀로나 근처인 몬토로이크에서 출생하여 바르셀로나 미술 학교를 중퇴하고 1919년 파리로 나와 작품 활동을 시작하였다. 초기의 작품에는 사물에 대한 정밀한 형태적 감수성과 친밀감이 드는 서정적인 감동이 조화를 이루고 있다. 1923년부터 바실리 칸딘스키의 영향을 받아 초현실주의 화풍으로 바뀌었다. 그의 작품은 밝고 가벼운 색채와 소박하며 단순한 형식으로 이루어져 신선한 정서가 풍긴다. 미로의 작품에는 초현실주의 특유한 어두운 느낌이나 심리묘사는 적고 밝은 소박성이 특질이며 모두를 순수한 상징기호로 바꾸어 가는 매력이 있다. 대표작으로 〈야곡〉 〈곡립의 귀〉 〈해맑은 웃음〉 등이 있다.</p></div>');
+				break;
+			case 18:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Marc Chagall</h3><div class="about__meta"><img src="img/exhibition/village.jpg" alt=""><div class="about__meta__info"><h5>나와 마을(Moi et le Village)</h5><p>Marc Chagall | 1911 | 1.92m x 1.51m | Oil painting</p></div></div><p>《나와 마을》(I and the Village)은 마르크 샤갈이 1911년에 제작한 작품이다. "나는 묘화(描畵)의 대상을 러시아에서 가지고 왔다. 그리고 파리는 그 위에 빛깔을 주었던 것이다"라고 샤갈은 말하였는데 사실에 있어서 파리에서 제작된 이 그림에도 갖가지 고향의 추억이 뒤범벅이 되어 있다. 소·바이올린·잉어·닭·꽃다발 등 모두 샤갈이 자랑으로 여기는 조형 언어이며, 그의 소는 이집트의 Himmelkuh(천국의 소)와 같이 행복한 상징이라고도 말한다. 여기에는 입체파에 대한 관심도 엿보이며 원형, 삼각형이 교차하는 형식이 두드러진다. 집과 농부가 거꾸로 서 있는 것도 과연 그다운 착상이며 이것은 하늘로 나는 인간이나 떨어진 목 등과 같아서 비합리를 유머러스하게 표현해 보인다. 그러나 에콜 드 파리의 많은 고향 상실자에게는 이러한 비합리적인 꿈만이 생활의 지주이며 신화였을 것이다.</p></div>');
+				break;
+			case 19:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Roy Lichtenstein</h3><div class="about__meta"><img src="img/exhibition/ribbon.jpg" alt=""><div class="about__meta__info"><h5>Girl with Hair Ribbon</h5><p>Roy Lichtenstein | 1965 | 121.9 × 121.9 cm  | Oil and Magna on canvas</p></div></div><p>이 작품은 <행복의 눈물>의 작가로도 유명한 로이 리히텐슈타인(Roy Lichtenstein)이 그린 <헤어 리본을 한 소녀>(Girls with Hair Ribbon)이다. 그는 대량 생산된 이미지와 공산품 등을 사용해 기존의 이미지를 패러디하거나  재해석하는 방식을 사용했다. 그의 작품은 패러디를 통해 팝아트의 전제를 규정했다. 만화에 영감을 받은 리히텐슈타인은 작품들이 종종 장난스러운 방식으로 모방되는 동안에 문서화된 정확한 구도를 만들어냈다. 그의 작품은 인기있는 광고와 만화책 스타일에 영향을 받았다. 그는 팝아트가 미국 그림 (American painting) 이 아니라 산업 그림 (industrial painting)이라고 묘사했다.</p></div>');
+				break;
+			case 20:
+				$('.art_description').prepend('<div class="about__text"><h3 class="about__title"><br><br>Keith Allen Haring</h3><div class="about__meta"><img src="img/exhibition/haring.jpg" alt=""><div class="about__meta__info"><h5>People</h5><p>Keith Allen Haring | 1985 | 304.8 x 396.2cm | Untitled Acrylic and oil on muslin  </p></div></div><p>키스 앨런 해링은 1980년대 뉴욕의 거리문화에 영향을 받은 미국의 미술가이자 사회 운동가였다. 그래피티 예술가로 잘 알려진 인물로서, 하위문화로 낙인찍힌 낙서화의 형식을 빌려 새로운 회화 양식을 창조하였다. 간결한 선과 강렬한 원색, 재치와 유머가 넘치는 표현으로 그의 이미지는 세계적으로 대중적인 인기를 얻고 있다. 해링은 다른 낙서화가들과는 다르게 자신의 작품을 거리와 지하철에서 벗어나 티셔츠와 장난감, 공익광고와 포스터,벽화 등으로 제작하였고 상업화하였다. 그는 탄생과 죽음, 사랑, 전쟁과 평화 등의 우주관을 바탕으로 자신의 작품활동을 통해 다양한 인종과 문화를 표현하고 인종차별 반대, 에이즈 교육, 동성애자 인권운동 등의 사회문제를 다루었다. 상위예술과 하위예술간의 장벽을 무너뜨리려 노력한 그의 작품은 전 세계적으로 대중적 인기를 얻고 있다.</p></div>');
+				break;
+		}
+	});
+	</script>
 	</body>
 </html>
