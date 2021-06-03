@@ -214,7 +214,7 @@ ol {
 	padding: 16px 15px;
 	min-width: 180px;
 	color: #fff;
-	background: #8DB952;
+	background: #B798CF;
 	line-height: 1;
 	text-align: center;
 	font-weight: 700;
@@ -247,7 +247,7 @@ ol {
 	height: 4px;
 	left: calc(50% - 30px);
 	bottom: 0;
-	background: #8DB952;
+	background: #B798CF;
 }
 
 .section__title h2 {
@@ -436,7 +436,7 @@ ol {
 	height: 6px;
 	left: 0;
 	bottom: 8px;
-	background: #8DB952;
+	background: #B798CF;
 	z-index: -1;
 	-webkit-transition: 0.3s;
 	-o-transition: 0.3s;
@@ -701,7 +701,7 @@ ol {
 	height: 6px;
 	left: 0;
 	bottom: 8px;
-	background: #8DB952;
+	background: #B798CF;
 	opacity: 0.5;
 	z-index: -1;
 }
@@ -738,7 +738,7 @@ ol {
 .about__meta__info p {
 	text-transform: uppercase;
 	font-size: 12px;
-	color: #8DB952;
+	color: #B798CF;
 }
 
 
@@ -971,7 +971,7 @@ ol {
 }
 
 .fr-thumbnail-active {
-	border: 2px solid #8DB952;
+	border: 2px solid #B798CF;
 }
 
 .editbox {
