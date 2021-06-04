@@ -118,7 +118,7 @@
 				</form>
 			</div>
 				<div class='editbox'>
-					<button id='btnDel' onclick='imgdelete()' style="display:none;">삭제</button>
+					<button id='btnDel' onclick='imgdelete();' style="display:none;">삭제</button>
 					<button id='btnEdit' onclick='editmode()'>편집</button>
 				</div>
 				<div class="gallerybox">	
@@ -166,8 +166,6 @@
 		data.append('file', form, form.name);
 
 		var serverURL = "http://34.64.152.92:8000/api/v1/gallery/";
-	    
-	    $('#btnUpload').prop('disabled', true);
 		
 	    $.ajax({
 	        type: "POST",
@@ -179,12 +177,9 @@
 	        cache: false,
 	        timeout: 10000,
 	        success: function(){
-				$('.imgGrid1').empty();
-				$('.imgGrid2').empty();
-				$('.imgGrid3').empty();
-				$('.imgGrid4').empty();
-				galleryLoad();
-			}
+	        	galleryEditLoad();
+	        	editmode();
+	        }
 	    });
 	});
 
@@ -200,18 +195,21 @@
 				$.ajax({
 					url: delURL,
 					method: "DELETE",
-					success: function(){
-						$('.imgGrid1').empty();
-						$('.imgGrid2').empty();
-						$('.imgGrid3').empty();
-						$('.imgGrid4').empty();
-						galleryLoad();
+					success: function() {galleryEditLoad();
+						editmode();
 					}
 				})
 			}
 		}
 	}
 
+	function galleryEditLoad(){
+		$('.imgGrid1').empty();
+		$('.imgGrid2').empty();
+		$('.imgGrid3').empty();
+		$('.imgGrid4').empty();
+		galleryLoad();
+	}
 	// gallery: img load
 	function galleryLoad(){
 		$.getJSON("http://34.64.152.92:8000/api/v1/gallery/", function(result) {

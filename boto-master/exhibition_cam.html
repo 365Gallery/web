@@ -111,7 +111,7 @@
 		</div>
 		<div class="save-button">
 			<button id="btnSave" onclick="downloadImg('http://34.64.152.92:8000/media/output.jpeg');">변환영상 캡처</button>
-			<button class="btnSave" onclick="saveGallery('http://34.64.152.92:8000/media/output.jpeg'">갤러리에 추가</button>
+			<button class="btnSave" onclick="saveGallery('http://34.64.152.92:8000/media/output.jpeg');">갤러리에 추가</button>
 		</div>
 		<div class="cam-box">
 			<div id="mycam" class="input-cam" autoplay>
@@ -334,6 +334,9 @@
 		        timeout: 10000,
 		        success: function(){
 					alert("Save image to your gallery");
+				},
+				error: function(){
+					alert("error");
 				}
 		    });
 		 
