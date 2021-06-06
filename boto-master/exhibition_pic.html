@@ -113,7 +113,7 @@
 				<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
 				<label for="conversion_filename">파일 선택</label>
 				<input type="file" id="conversion_filename"  class="upload-hidden" accept="image/*"/>
-				<button id='imgConversion' onclick="conversionImage();">변환</button>
+				<button type="button" id='imgConversion' onclick="conversionImage();">변환</button>
 			</form>
 		</div>		
 		<div class="move-btn-cam">
@@ -163,7 +163,7 @@
 	<!-- Script : art description -->
 	<script>
 		$(document).ready(function() {
-			var num = location.href.substr(location.href.lastIndexOf('=') + 1);
+			var num = getPK();
 			num = num - '0'
 
 			
@@ -241,8 +241,7 @@
 	<!-- Script: server upload -->
 	<script>
 	function conversionImage() {
-    event.preventDefault();
-    
+		
     var form = $('#conversionForm')[0][1].files[0];
     var data = new FormData();
 	data.append('file', form, form.name);
@@ -345,7 +344,10 @@
 	    		newImage = newImage.substr(0, idx);
 	    	}
 	    	document.images[target].src = newImage+timeTmp;
-	        }
+	    },
+	    error: function() {
+	    	alert("Conversion failed");
+	    }
 	    });
 	}
 	</script>
@@ -426,6 +428,7 @@
 		    var imageBlob = dataURLtoBlob(canvas.toDataURL());
 		    var data = new FormData();
 		    data.append('file', imageBlob, "365gallery.jpeg");
+		    data.append('tag_idx', getPK());
 		    var serverURL = "http://34.64.152.92:8000/api/v1/gallery/";
 
 		    $.ajax({
@@ -438,7 +441,10 @@
 		        cache: false,
 		        timeout: 10000,
 		        success: function(){
-					alert("Save image to your gallery");
+					alert("Gallery upload success");
+				},
+				error: function() {
+					alert("Gallery upload failed");
 				}
 		    });
 		 
@@ -453,8 +459,13 @@
 	}
 
 	function setChildValue_cam() {
-		var num = location.href.substr(location.href.lastIndexOf('=') + 1);
+		num = getPK();
 		window.location.href = "exhibition_cam.html?index=" + num;
+	}
+
+	function getPK(){
+		var num = location.href.substr(location.href.lastIndexOf('=') + 1);
+		return num;
 	}
 	</script>
 	</body>

@@ -106,35 +106,29 @@
 	<!-- Header Section end -->
 
 	<!-- About Page -->
-	<div class="gallery__page">
-		<div class="gallery__warp">
-			<div class="filebox" style="display:none;">
-				<form method="POST" enctype="multipart/form-data" id="uploadForm">
-					<input class="upload-name" value="선택된 파일 없음" disabled="disabled" >
-					<label for="ex_filename">파일 선택</label>
-					<input type="file" id="ex_filename"  class="upload-hidden" accept="image/*"/>
-					<button id='btnUpload'>추가</button>
-					
-				</form>
+	<section class="about__page">
+		<div class="comment__page">
+			<div class="image_section">
+				<img id="comment_img" src="">
 			</div>
-				<div class='editbox'>
-					<button id='btnDel' onclick='imgdelete();' style="display:none;">삭제</button>
-					<button id='btnEdit' onclick='editmode()'>편집</button>
-				</div>
-				<div class="gallerybox">	
-				<div class="row">
-					<div class="imgGrid1">
-					</div>
-					<div class="imgGrid2">
-					</div>
-					<div class="imgGrid3">
-					</div>
-					<div class="imgGrid4">
-					</div>
+			<div class="button_section" >
+				<button onclick="location.href='mygallery.html'">갤러리로 이동</button>
+			</div>
+			<div class="input_writer">
+				<textarea id="comment_writer" rows=1 placeholder="작성자"></textarea>
+			</div>
+			<div class="input_comment">
+				<textarea id="new_comment" rows=2 placeholder="Comment를 입력하세요"></textarea>
+				<button type='button' id="commentBtn" onclick="commentPost();">등록</button>
+			</div>
+			<div id="comments" class="view_comment">
+				<div class="comment-row">
+					<div class="comment-writer"></div>
+					<div class="comment-content"></div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!-- About Page end -->
 
 	<!-- Search Begin -->
@@ -157,151 +151,109 @@
 
 	<!-- Script: Gallery script-->
 	<script>
-	// gallery: add
-	$('#btnUpload').on('click', function(event) {
-	    event.preventDefault();
-
-	    var form = $('#uploadForm')[0][1].files[0];
-	    var data = new FormData();
-		data.append('file', form, form.name);
-
-		var serverURL = "http://34.64.152.92:8000/api/v1/gallery/";
-		
-	    $.ajax({
-	        type: "POST",
-	        enctype: 'multipart/form-data',
-	        url: serverURL,
-	        data: data,
-	        processData: false,
-	        contentType: false,
-	        cache: false,
-	        timeout: 10000,
-	        success: function(){
-	        	location.reload();
-	    	},
-	    	error: function() {
-	    		alert("Upload failed");
-	    	}
-	    });
-
-	});
-
-	// gallery: delete
-	function imgdelete(){
-		var checkObj = document.getElementsByName("images");
-		var num = checkObj.length;
-		var delURL;
-
-		for (i = 0; i < num; i++){
-			if (checkObj[i].checked == true){
-				delURL = "http://34.64.152.92:8000/api/v1/gallery/" + checkObj[i].value + "/";
-				$.ajax({
-					url: delURL,
-					method: "DELETE",
-					success: function() {
-						location.reload();
-					},
-					error: function() {
-						alert("Delete failed");
-					}
-				})
-			}
-		}
-	}
-
-	// gallery: img load
-	function galleryLoad(){
+	// comment: data load
+	function dataLoad(){
 		$.getJSON("http://34.64.152.92:8000/api/v1/gallery/", function(result) {
 			var i = 0;
-			while (result['data'][i]){
-				var gridName;
-				if (i % 4 == 0)
-					gridName = '.imgGrid1';
-				else if (i % 4 == 1)
-					gridName = '.imgGrid2';
-				else if (i % 4 == 2)
-					gridName = '.imgGrid3';
-				else if (i % 4 == 3)
-					gridName = '.imgGrid4';
+			while (result.data[i]){
+				if (result.data[i].pk == getPK()){
+					document.getElementById("comment_img").src = result.data[i].file;
+					if (result.data[i].tag != null){
+						$('.image_section').append('<p>#'+ result.data[i].tag.name + '</p>');
+					}
+					else {
+						$('.image_section').append('<p>#Upload by User</p>');
+					}
 
-				var prepend_data = '<input type="checkbox" class="imgCheck" name="images" value=' + result.data[i].pk + ' " style="display: none;"/><article class="image_list"><div class="galleryImg"> <a href="#" onclick="toCommentPage(' + result.data[i].pk + ')"><img src=' + result.data[i].file + ' alt=""></a></div><a class="image_tag" onclick="toCommentPage(' + result.data[i].pk + ')" id="image_tag_' + result.data[i].pk + '" href="#" >';
-				if (result.data[i].tag != null)
-					prepend_data += result.data[i].tag.name;
-				else
-					prepend_data += "Upload by User";
-				prepend_data = prepend_data + '</a></article>';
-
-				$(gridName).prepend(prepend_data);
-
-				if (result.data[i].tag != null){
-					var rgb = result.data[i].tag.color;
-					var r = rgb[0] + rgb[1];
-					r = parseInt(r, 16);
-					var g = rgb[2] + rgb[3];
-					g = parseInt(g, 16);
-					var b = rgb[4] + rgb[5];
-					b = parseInt(b, 16);
-					var myrgba = 'rgba('+r+','+g+','+b+',0.4)';
-
-					document.getElementById("image_tag_" + result.data[i].pk).style.backgroundColor = myrgba;
+					if (result.data[i].comments[0]){
+						var j = 0;
+						while (result.data[i].comments[j]){
+							var writer = result.data[i].comments[j].comment.writer;
+							var text = result.data[i].comments[j].comment.text;
+							loadComment(writer, text);
+							j++;
+						}
+					}
+					else {
+						$('.view_comment').append('<p>등록된 Comment가 없습니다</p>');
+					}
+					break;
 				}
-
 				i++;
 			}
 		});
 	}
 
-	// gallery: mode change
-	function editmode(){
-		const btnElement = document.getElementById('btnEdit');
-		var html;
+	// comment: load comment
+	function loadComment(writer, comment) {
+		var writer_div = document.createElement('div');
+		writer_div.classList.add('comment-writer');
+		writer_div.innerText = writer;
 
-		if (btnElement.innerHTML == '편집'){
-			html = '완료';
-			$('#btnDel').show();
-			$('.imgCheck').show();
-			$('.filebox').show();
-		}
-		else {
-			html = '편집';
-			$('#btnDel').hide();
-			$('.imgCheck').hide();
-			$('.filebox').hide();
-		}
+		var content_div = document.createElement('div');
+		content_div.classList.add('comment-content');
+		content_div.innerText = comment;
 
-		btnElement.innerHTML = html;
+		var comment_div = document.createElement('div');
+		comment_div.classList.add('comment-row');
+		comment_div.appendChild(writer_div);
+		comment_div.appendChild(content_div);
+		document.getElementById('comments').appendChild(comment_div);
 	}
 
-	// gallery: exhibition menu parameter
+	// comment: post comment by ajax
+	function commentPost() {
+		var writer = $('#comment_writer').val();
+		var content = $('#new_comment').val();
+
+		if (writer == ''){
+			writer = '익명';
+		}
+		if (content == ''){
+			alert('Comment를 입력하세요');
+		}
+		else {
+			var data = new FormData();
+			data.append('writer', writer);
+			data.append('text', content);
+			data.append('photo_pk', getPK());
+
+			var serverURL = "http://34.64.152.92:8000/api/v1/comment/";
+
+			$.ajax({
+		        type: "POST",
+		        url: serverURL,
+		        data: data,
+		        dataType: 'json',
+		        processData: false,
+		        contentType: false,
+		        cache: false,
+		        timeout: 10000,
+		        success: function() {
+		        	location.reload();
+		        },
+		        error: function() {
+		        	alert('Upload failed');
+		        }
+			    });
+		}
+	}
+
+	// comment: exhibition menu parameter
 	function setChildValue(index) {
 		window.location.href = "exhibition_pic.html?index=" + index;
 	}
 
-	// gallery: move to comment page
-	function toCommentPage(pk){
-		window.location.href = "comment.html?pk=" + pk;
+	// comment: get pk num
+	function getPK(){
+		var pk = location.href.substr(location.href.lastIndexOf('=') + 1);
+
+		return pk;
 	}
 
-	var sel_file;
-
-	// ready function
-	$(document).ready(function(){ 
-		var fileTarget = $('.filebox .upload-hidden'); 
-
-		// file name connecting
-		fileTarget.on('change', function(){
-			if (window.FileReader){ 
-				var filename = $(this)[0].files[0].name; 
-			} 
-			else {
-				var filename = $(this).val().split('/').pop().split('\\').pop();
-			} 
-			$(this).siblings('.upload-name').val(filename);
-		});
-
-		// gallery data load
-		galleryLoad();
-	});
+	$(document).ready(function() {
+		dataLoad();
+	})
 	</script>
 	</body>
 </html>

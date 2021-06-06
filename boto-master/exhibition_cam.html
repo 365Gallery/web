@@ -321,6 +321,7 @@
 		    var imageBlob = dataURLtoBlob(canvas.toDataURL());
 		    var data = new FormData();
 		    data.append('file', imageBlob, "365gallery.jpeg");
+		    data.append('tag_idx', getPK());
 		    var serverURL = "http://34.64.152.92:8000/api/v1/gallery/";
 
 		    $.ajax({
@@ -333,15 +334,20 @@
 		        cache: false,
 		        timeout: 10000,
 		        success: function(){
-					alert("Save image to your gallery");
+					alert("Gallery upload success");
 				},
-				error: function(){
-					alert("error");
+				error: function() {
+					alert("Gallery upload failed");
 				}
 		    });
 		 
 		  };
 		}
+
+	function getPK(){
+		var num = location.href.substr(location.href.lastIndexOf('=') + 1);
+		return num;
+	}
 	</script>
 
 	<!-- Script : art description -->
