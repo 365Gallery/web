@@ -6,9 +6,9 @@
 - You can see the description of the art
 - Download the result image or upload to gallery
 
-## Shared Gallery
+## Your Own Gallery
 - Upload your own images
-- You can view others images they uploaded
+- You can share your gallery using gallery URL
 - Freely comment to others post
 
 ## Template Copyright
